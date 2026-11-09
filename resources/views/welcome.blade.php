@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MangoJelly.co — Segarnya Mangga Asli, Creamy-nya Susu</title>
+    <title>mango.moooo — Milk, Mango & Jelly</title>
 
     <!-- Google Fonts: Plus Jakarta Sans & Fraunces -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,23 +40,23 @@
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-900/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
 
-            <!-- Brand Identity + Logo -->
+            <!-- Brand Identity + Logo Landscape -->
             <a href="#" class="flex items-center gap-3.5 group">
-                <div class="w-12 h-12 rounded-full bg-[#FFDD9C] border-2 border-[#FB6C00] overflow-hidden flex items-center justify-center shrink-0 shadow-xs">
+                <div class="h-12 px-2.5 rounded-2xl bg-white border border-stone-900/15 overflow-hidden flex items-center justify-center shrink-0 shadow-2xs">
                     <img
                         src="logo.png"
-                        alt="MangoJelly.co Logo"
-                        class="w-full h-full object-cover"
+                        alt="mango.moooo Logo"
+                        class="h-10 w-auto object-contain"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                     >
-                    <span style="display:none;" class="font-display text-lg font-bold text-[#FB6C00]">MJ</span>
+                    <span style="display:none;" class="font-display text-lg font-bold text-[#FB6C00] px-1">m.m</span>
                 </div>
                 <div>
                     <span class="block font-display text-xl sm:text-2xl font-bold tracking-tight leading-none text-stone-900">
-                        MangoJelly<span class="text-[#FB6C00]">.co</span>
+                        mango<span class="text-[#FB6C00]">.moooo</span>
                     </span>
                     <span class="block text-[11px] uppercase tracking-widest text-[#569118] font-bold mt-1">
-                        Mango Jelly Milk
+                        Milk, Mango & Jelly
                     </span>
                 </div>
             </a>
@@ -138,7 +138,7 @@
             class="relative w-full max-w-xl bg-white h-full pt-24 pb-10 px-6 sm:px-12 flex flex-col justify-between overflow-y-auto border-l border-stone-900/10 shadow-2xl"
         >
             <div>
-                <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#569118] mb-5">Navigasi MangoJelly.co</p>
+                <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#569118] mb-5">Navigasi mango.moooo</p>
 
                 <nav class="divide-y divide-stone-900/10 border-y border-stone-900/10">
                     <a @click="menuOpen = false" href="#komposisi" class="group py-4 flex items-baseline justify-between hover:pl-3 transition-all duration-200">
@@ -178,7 +178,7 @@
                             <span class="text-xs font-mono font-bold text-[#FB6C00]">05</span>
                             <span class="font-display text-2xl text-stone-900 group-hover:text-[#FB6C00] transition-colors">Pemesanan & Kontak</span>
                         </div>
-                        <span class="text-xs uppercase tracking-wider text-stone-400 group-hover:text-stone-900">@MangoJelly.co →</span>
+                        <span class="text-xs uppercase tracking-wider text-stone-400 group-hover:text-stone-900">@mango.moooo →</span>
                     </a>
                 </nav>
             </div>
@@ -190,7 +190,7 @@
                     <span class="text-xs font-bold text-[#FB6C00]">2 Botol Rp25.000</span>
                 </div>
                 <p class="text-xs text-stone-700 leading-relaxed mb-4">
-                    Nikmati kesegaran Mango Jelly Milk dingin di tengah cuaca panas Kota Makassar.
+                    Nikmati kesegaran Mango Jelly Milk dari <strong>mango.moooo</strong> di tengah cuaca panas Kota Makassar.
                 </p>
                 <button
                     @click="menuOpen = false; cartOpen = true"
@@ -212,7 +212,7 @@
                     <div>
                         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFDD9C]/70 border border-[#F9B637] text-stone-900 text-xs font-bold mb-6">
                             <span class="w-2 h-2 rounded-full bg-[#569118]"></span>
-                            <span>CREAMY DESSERT DRINK • MAKASSAR</span>
+                            <span>MANGO.MOOOO • MILK, MANGO & JELLY</span>
                         </div>
 
                         <h1 class="font-display text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-stone-950 leading-[1.1]">
@@ -220,7 +220,7 @@
                         </h1>
 
                         <p class="mt-6 text-base text-stone-600 leading-relaxed">
-                            Nikmati perpaduan buah mangga asli, susu creamy, jelly kenyal, dan chia seed dalam satu botol. <strong class="text-stone-900 font-semibold">Mango Jelly Milk</strong> hadir sebagai minuman dessert yang menyegarkan, lezat, dan cocok menemani aktivitasmu setiap hari.
+                            Nikmati perpaduan buah mangga asli, susu creamy, jelly kenyal, dan chia seed dalam satu botol. <strong class="text-stone-900 font-semibold">Mango Jelly Milk</strong> dari <strong class="text-[#FB6C00] font-semibold">mango.moooo</strong> hadir sebagai minuman dessert yang menyegarkan, lezat, dan cocok menemani aktivitasmu setiap hari.
                         </p>
                         <p class="mt-3 text-sm text-stone-600 leading-relaxed bg-[#FFDD9C]/35 border-l-4 border-[#569118] p-3.5 rounded-r-xl">
                             Dibuat dari bahan berkualitas dan disajikan dalam kondisi dingin untuk memberikan kesegaran maksimal, terutama di tengah cuaca panas Kota Makassar.
@@ -262,27 +262,27 @@
                 <div class="lg:col-span-5 rounded-3xl bg-[#FFDD9C]/50 border border-[#F9B637] p-7 sm:p-8 flex flex-col justify-between">
 
                     <div class="flex items-center justify-between">
-                        <span class="text-xs font-mono uppercase tracking-widest text-stone-700 font-bold">MANGOJELLY.CO // 250ML</span>
+                        <span class="text-xs font-mono uppercase tracking-widest text-stone-700 font-bold">MANGO.MOOOO // 250ML</span>
                         <span class="px-3 py-1 rounded-full bg-[#569118] text-white text-xs font-bold">Dingin Menyegarkan</span>
                     </div>
 
-                    <!-- Gambar Logo / Produk Utama -->
+                    <!-- Gambar Logo / Produk Utama (Proporsional Landscape) -->
                     <div class="my-6 flex flex-col items-center">
-                        <div class="w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-white p-3 border-2 border-[#FB6C00]/30 shadow-md flex items-center justify-center overflow-hidden">
+                        <div class="w-full aspect-4/3 rounded-3xl bg-white p-5 border-2 border-[#FB6C00]/30 shadow-sm flex items-center justify-center overflow-hidden">
                             <img
                                 src="logo.png"
-                                alt="MangoJelly.co Mango Jelly Milk"
-                                class="w-full h-full object-contain rounded-full"
+                                alt="mango.moooo — Milk, Mango & Jelly"
+                                class="w-full h-full object-contain"
                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                             >
                             <!-- Fallback Visual jika logo.png belum ditaruh di folder public -->
-                            <div style="display:none;" class="w-full h-full rounded-full bg-gradient-to-b from-[#FFDD9C] via-[#F9B637] to-[#FB6C00] flex-col items-center justify-center text-center p-4">
-                                <span class="font-display text-2xl font-bold text-white drop-shadow">MangoJelly.co</span>
-                                <span class="text-xs font-semibold text-stone-900 mt-1 bg-white/90 px-3 py-1 rounded-full">Mango Jelly Milk</span>
+                            <div style="display:none;" class="w-full h-full rounded-2xl bg-gradient-to-b from-[#FFDD9C] via-[#F9B637] to-[#FB6C00] flex-col items-center justify-center text-center p-4">
+                                <span class="font-display text-3xl font-bold text-white drop-shadow">mango.moooo</span>
+                                <span class="text-xs font-bold text-stone-900 mt-2 bg-white/90 px-3.5 py-1 rounded-full">Milk, Mango & Jelly • 250ml</span>
                             </div>
                         </div>
 
-                        <!-- 3 Badge Sesuai Logo -->
+                        <!-- 3 Badge Keunggulan -->
                         <div class="mt-5 grid grid-cols-3 gap-2 w-full">
                             <div class="bg-white/90 border border-stone-900/10 rounded-xl p-2.5 text-center">
                                 <span class="block text-[11px] font-bold text-[#569118]">Bahan</span>
@@ -351,7 +351,7 @@
                             <p class="text-sm text-stone-600 leading-relaxed">{{ $item['detail'] }}</p>
                         </div>
                         <div class="mt-8 pt-4 border-t border-stone-900/10 flex items-center justify-between text-xs font-bold text-[#569118]">
-                            <span>MangoJelly.co Standard</span>
+                            <span>mango.moooo Standard</span>
                             <span>✓ Pilihan Terbaik</span>
                         </div>
                     </div>
@@ -509,7 +509,7 @@
                                 Yuk, Nikmati Kesegaran Mango Jelly Milk!
                             </h2>
                             <p class="mt-4 text-sm sm:text-base text-stone-700 leading-relaxed">
-                                Jangan lewatkan kesegaran Mango Jelly Milk! Nikmati perpaduan mangga asli, susu creamy, jelly, dan chia seed yang cocok menemani aktivitasmu. Pesan sekarang dan rasakan kesegarannya bersama teman maupun keluarga.
+                                Jangan lewatkan kesegaran Mango Jelly Milk dari <strong>mango.moooo</strong>! Nikmati perpaduan mangga asli, susu creamy, jelly, dan chia seed yang cocok menemani aktivitasmu. Pesan sekarang dan rasakan kesegarannya bersama teman maupun keluarga.
                             </p>
 
                             <div class="mt-8 flex flex-wrap gap-3">
@@ -520,11 +520,11 @@
                                     Pesan Lewat Keranjang Web
                                 </button>
                                 <a
-                                    href="https://instagram.com/MangoJelly.co"
+                                    href="https://instagram.com/mango.moooo"
                                     target="_blank"
                                     class="px-7 py-4 rounded-2xl bg-white hover:bg-stone-900 hover:text-white text-stone-900 border border-stone-900/15 text-xs font-bold uppercase tracking-wider transition-colors"
                                 >
-                                    DM Instagram @MangoJelly.co
+                                    DM Instagram @mango.moooo
                                 </a>
                             </div>
                         </div>
@@ -537,7 +537,7 @@
 
                             <div>
                                 <span class="block text-[11px] font-bold uppercase tracking-wider text-stone-400">Nama Usaha</span>
-                                <span class="text-base font-bold text-stone-900">MangoJelly.co</span>
+                                <span class="text-base font-bold text-stone-900">mango.moooo</span>
                             </div>
 
                             <div>
@@ -547,8 +547,8 @@
 
                             <div>
                                 <span class="block text-[11px] font-bold uppercase tracking-wider text-stone-400">Instagram Resmi</span>
-                                <a href="https://instagram.com/MangoJelly.co" target="_blank" class="text-base font-bold text-[#FB6C00] hover:underline">
-                                    @MangoJelly.co
+                                <a href="https://instagram.com/mango.moooo" target="_blank" class="text-base font-bold text-[#FB6C00] hover:underline">
+                                    @mango.moooo
                                 </a>
                             </div>
                         </div>
@@ -563,8 +563,8 @@
     <footer class="bg-stone-950 text-white border-t border-stone-800 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
-                <span class="font-display text-xl font-bold text-[#FFDD9C]">MangoJelly.co</span>
-                <p class="text-xs text-stone-400 mt-1">Mango Jelly Milk • Makassar, Sulawesi Selatan • Instagram: @MangoJelly.co</p>
+                <span class="font-display text-xl font-bold text-[#FFDD9C]">mango.moooo</span>
+                <p class="text-xs text-stone-400 mt-1">Milk, Mango & Jelly • Makassar, Sulawesi Selatan • Instagram: @mango.moooo</p>
             </div>
             <div class="flex flex-wrap gap-6 text-xs text-stone-400">
                 <a href="#komposisi" class="hover:text-[#F9B637]">Komposisi</a>
@@ -602,7 +602,7 @@
             <div>
                 <div class="flex items-center justify-between pb-5 border-b border-stone-900/10">
                     <div>
-                        <h3 class="font-display text-2xl font-bold text-stone-900">Keranjang MangoJelly.co</h3>
+                        <h3 class="font-display text-2xl font-bold text-stone-900">Keranjang mango.moooo</h3>
                         <p class="text-xs text-stone-500">Makassar, Sulawesi Selatan</p>
                     </div>
                     <button
@@ -693,7 +693,7 @@
                 },
                 checkoutWhatsApp() {
                     if (this.cart.length === 0) return;
-                    let lines = ['Halo MangoJelly.co Makassar! Saya ingin memesan:'];
+                    let lines = ['Halo mango.moooo Makassar! Saya ingin memesan:'];
                     this.cart.forEach(item => {
                         lines.push(`- ${item.qty}x ${item.name} (${this.formatRupiah(item.price * item.qty)})`);
                     });
