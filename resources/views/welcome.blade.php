@@ -1,147 +1,858 @@
-<?php
-// build-pages.php — Generator halaman statis mango.moooo tanpa promo bundling
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mango.moooo — Milk, Mango & Jelly | Makassar</title>
 
-$compositions = [
-    [
-        'step' => 'Komposisi 01',
-        'title' => 'Fresh Mango',
-        'detail' => 'Menggunakan buah mangga asli yang memberikan rasa manis dan sedikit asam alami serta aroma buah yang segar.',
-        'badge' => '100% Buah Asli',
-        'color' => '#FB6C00',
-        'bg' => 'bg-[#FFDD9C]/35',
-    ],
-    [
-        'step' => 'Komposisi 02',
-        'title' => 'Creamy Milk',
-        'detail' => 'Menggunakan susu UHT berkualitas yang menghasilkan rasa gurih, lembut, dan creamy pada setiap tegukan.',
-        'badge' => 'Gurih & Lembut',
-        'color' => '#569118',
-        'bg' => 'bg-white',
-    ],
-    [
-        'step' => 'Komposisi 03',
-        'title' => 'Jelly & Chia Seed',
-        'detail' => 'Tambahan jelly memberikan sensasi kenyal, sedangkan chia seed memberikan tekstur unik dan tambahan serat.',
-        'badge' => 'Kaya Serat',
-        'color' => '#F9B637',
-        'bg' => 'bg-[#F9B637]/20',
-    ],
-];
+    <!-- Google Fonts: Plus Jakarta Sans & Fraunces -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-$products = [
-    [
-        'id' => 'mjm-single',
-        'code' => '01',
-        'name' => 'Mango Jelly Milk',
-        'size' => 'Ukuran 250 ml per botol',
-        'price' => 15000,
-        'tag' => 'Signature Drink',
-        'desc' => 'Minuman creamy dessert dengan mangga asli, susu UHT, jelly, dan chia seed. Cocok dinikmati saat dingin.',
-        'highlight' => 'Diproduksi fresh setiap hari & ramah di kantong mahasiswa',
-    ],
-];
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-$processes = [
-    [
-        'no' => '01',
-        'title' => 'Pemilihan Mangga',
-        'desc' => 'Memilih buah mangga segar dan berkualitas, kemudian mencuci serta memotong buah sebelum diolah.',
-    ],
-    [
-        'no' => '02',
-        'title' => 'Pembuatan Jelly',
-        'desc' => 'Merebus bubuk jelly sesuai takaran hingga matang, kemudian mencetak dan memotongnya menjadi bagian kecil.',
-    ],
-    [
-        'no' => '03',
-        'title' => 'Persiapan Bahan',
-        'desc' => 'Merendam chia seed hingga mengembang serta mencampurkan susu UHT dan gula sesuai takaran.',
-    ],
-    [
-        'no' => '04',
-        'title' => 'Pengemasan Produk',
-        'desc' => 'Memasukkan mangga, jelly, chia seed, dan susu ke dalam botol secara berlapis, kemudian menyimpannya di dalam chiller sebelum dijual.',
-    ],
-];
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-$advantages = [
-    [
-        'title' => 'Real Mango',
-        'desc' => 'Menggunakan buah mangga asli, bukan sekadar perisa mangga.',
-        'accent' => 'border-l-4 border-l-[#FB6C00]',
-    ],
-    [
-        'title' => 'Creamy Taste',
-        'desc' => 'Perpaduan susu UHT yang lembut dan gurih.',
-        'accent' => 'border-l-4 border-l-[#F9B637]',
-    ],
-    [
-        'title' => 'Unique Texture',
-        'desc' => 'Jelly kenyal dan chia seed yang memberikan sensasi berbeda.',
-        'accent' => 'border-l-4 border-l-[#569118]',
-    ],
-    [
-        'title' => 'Fresh & Cold',
-        'desc' => 'Diproduksi setiap hari dan disimpan dalam chiller.',
-        'accent' => 'border-l-4 border-l-[#569118]',
-    ],
-    [
-        'title' => 'Affordable Price',
-        'desc' => 'Harga Rp15.000 yang ramah untuk mahasiswa.',
-        'accent' => 'border-l-4 border-l-[#FB6C00]',
-    ],
-    [
-        'title' => 'Aesthetic Packaging',
-        'desc' => 'Dikemas dalam botol transparan yang praktis dan menarik.',
-        'accent' => 'border-l-4 border-l-[#F9B637]',
-    ],
-];
+    <style>
+        [x-cloak] { display: none !important; }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(86, 145, 24, 0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body
+    x-data="mangoStore()"
+    :class="{ 'overflow-hidden': menuOpen || cartOpen }"
+    class="bg-[#FFFCF7] text-stone-900 font-sans antialiased selection:bg-[#F9B637] selection:text-stone-950"
+>
 
-$blade = file_get_contents(__DIR__ . '/resources/views/welcome.blade.php');
+    <!-- 1. TOP ANNOUNCEMENT BAR -->
+    <div class="bg-[#569118] text-white text-[11px] sm:text-xs font-semibold tracking-wider">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 py-2.5 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2.5">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#FFDD9C] animate-pulse"></span>
+                <span class="truncate">FRESH EVERY DAY • REAL MANGO • CREAMY MILK • JELLY & CHIA SEED</span>
+            </div>
+            <div class="hidden md:flex items-center gap-4 text-[#FFDD9C] shrink-0">
+                <a href="https://www.instagram.com/manggo.moo?xtok=MWxsd2xlcTJkc2Z0Yw==" target="_blank" class="hover:text-white transition-colors">
+                    IG: @manggo.moo
+                </a>
+                <span>•</span>
+                <a href="https://wa.me/6285397873189" target="_blank" class="hover:text-white transition-colors">
+                    WA: +62 853-9787-3189
+                </a>
+            </div>
+        </div>
+    </div>
 
-$tailwindSetup = <<<'HTML'
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                fontFamily: {
-                    sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    display: ['"Fraunces"', 'serif'],
-                },
-                colors: {
-                    mango: {
-                        green: '#569118',
-                        orange: '#FB6C00',
-                        gold: '#F9B637',
-                        cream: '#FFDD9C',
+    <!-- 2. MODERN GLASSMORPHIC HEADER & INTERACTIVE BURGER MENU -->
+    <header class="sticky top-0 z-50 bg-white/85 backdrop-blur-xl border-b border-stone-900/10 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+
+            <!-- Brand Identity -->
+            <a href="#" class="flex items-center gap-3.5 group">
+                <div class="h-12 px-2.5 rounded-2xl bg-white border border-stone-200 group-hover:border-[#FB6C00] overflow-hidden flex items-center justify-center shrink-0 shadow-2xs transition-colors">
+                    <img
+                        src="logo.png?v=2"
+                        alt="mango.moooo Logo"
+                        class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+                    <span style="display:none;" class="font-display text-lg font-bold text-[#FB6C00] px-1">m.m</span>
+                </div>
+                <div>
+                    <span class="block font-display text-xl sm:text-2xl font-bold tracking-tight leading-none text-stone-950">
+                        mango<span class="text-[#FB6C00]">.moooo</span>
+                    </span>
+                    <span class="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#569118] font-bold mt-1">
+                        Milk, Mango & Jelly
+                    </span>
+                </div>
+            </a>
+
+            <!-- Center Quick Navigation (Desktop) -->
+            <nav class="hidden lg:flex items-center gap-1 bg-stone-100/80 p-1.5 rounded-full border border-stone-200/80 text-xs font-semibold text-stone-700">
+                <a href="#komposisi" class="px-4 py-1.5 rounded-full hover:bg-white hover:text-stone-950 hover:shadow-2xs transition-all">Komposisi</a>
+                <a href="#katalog" class="px-4 py-1.5 rounded-full hover:bg-white hover:text-stone-950 hover:shadow-2xs transition-all">Katalog</a>
+                <a href="#produksi" class="px-4 py-1.5 rounded-full hover:bg-white hover:text-stone-950 hover:shadow-2xs transition-all">Proses Produksi</a>
+                <a href="#keunggulan" class="px-4 py-1.5 rounded-full hover:bg-white hover:text-stone-950 hover:shadow-2xs transition-all">Keunggulan</a>
+                <a href="#kontak" class="px-4 py-1.5 rounded-full hover:bg-white hover:text-[#FB6C00] hover:shadow-2xs transition-all">Kontak</a>
+            </nav>
+
+            <!-- Right Controls: Cart Trigger & Architectural Burger Button -->
+            <div class="flex items-center gap-2.5">
+                <button
+                    @click="cartOpen = true; menuOpen = false"
+                    class="relative inline-flex items-center gap-2.5 pl-4 pr-3 py-2.5 rounded-full bg-[#FFDD9C]/70 hover:bg-[#F9B637] text-stone-950 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-2xs"
+                >
+                    <svg class="w-4 h-4 text-[#FB6C00]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                    <span class="hidden sm:inline">Pesanan</span>
+                    <span
+                        x-text="cartCount()"
+                        class="w-5 h-5 rounded-full bg-[#FB6C00] text-white text-[11px] flex items-center justify-center font-bold"
+                    >0</span>
+                </button>
+
+                <button
+                    @click="menuOpen = !menuOpen; cartOpen = false"
+                    :aria-expanded="menuOpen"
+                    aria-label="Toggle Navigation Menu"
+                    class="group relative inline-flex items-center gap-3 pl-4 pr-3.5 py-2.5 rounded-full border border-stone-900/15 hover:border-stone-900 bg-white text-stone-900 transition-all duration-300 cursor-pointer shadow-2xs"
+                >
+                    <span
+                        x-text="menuOpen ? 'Tutup' : 'Menu'"
+                        class="text-xs font-bold uppercase tracking-wider"
+                    >Menu</span>
+
+                    <div class="w-5 h-4 relative flex flex-col justify-between items-end">
+                        <span
+                            :class="menuOpen ? 'rotate-45 translate-y-[7px] w-5 bg-[#FB6C00]' : 'w-5 bg-stone-900 group-hover:bg-[#569118]'"
+                            class="h-[2px] rounded-full transition-all duration-300 origin-center"
+                        ></span>
+                        <span
+                            :class="menuOpen ? 'opacity-0 translate-x-2' : 'w-3.5 bg-stone-900 group-hover:w-5 group-hover:bg-[#FB6C00]'"
+                            class="h-[2px] rounded-full transition-all duration-300"
+                        ></span>
+                        <span
+                            :class="menuOpen ? '-rotate-45 -translate-y-[7px] w-5 bg-[#FB6C00]' : 'w-4 bg-stone-900 group-hover:w-5 group-hover:bg-[#569118]'"
+                            class="h-[2px] rounded-full transition-all duration-300 origin-center"
+                        ></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SLIDE-OVER INTERACTIVE BURGER MENU DRAWER -->
+    <div
+        x-show="menuOpen"
+        x-cloak
+        class="fixed inset-0 z-40 flex justify-end"
+    >
+        <div
+            x-show="menuOpen"
+            x-transition.opacity
+            @click="menuOpen = false"
+            class="fixed inset-0 bg-stone-950/50 backdrop-blur-xs"
+        ></div>
+
+        <div
+            x-show="menuOpen"
+            x-transition:enter="transition transform ease-out duration-300"
+            x-transition:enter-start="translate-x-full"
+            x-transition:enter-end="translate-x-0"
+            x-transition:leave="transition transform ease-in duration-200"
+            x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full"
+            class="relative w-full max-w-xl bg-white h-full pt-24 pb-8 px-6 sm:px-12 flex flex-col justify-between overflow-y-auto border-l border-stone-900/10 shadow-2xl"
+        >
+            <div>
+                <div class="flex items-center justify-between mb-4">
+                    <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#569118]">Direktori Navigasi</p>
+                    <span class="text-xs font-mono text-stone-400">mango.moooo</span>
+                </div>
+
+                <nav class="divide-y divide-stone-900/10 border-y border-stone-900/10">
+                    <a @click="menuOpen = false" href="#komposisi" class="group py-4 flex items-baseline justify-between hover:pl-3 transition-all duration-200">
+                        <div class="flex items-baseline gap-4">
+                            <span class="text-xs font-mono font-bold text-[#FB6C00]">01</span>
+                            <span class="font-display text-2xl text-stone-900 group-hover:text-[#FB6C00] transition-colors">Komposisi Produk</span>
+                        </div>
+                        <span class="text-xs uppercase tracking-wider text-stone-400 group-hover:text-stone-900">3 Bahan Utama →</span>
+                    </a>
+
+                    <a @click="menuOpen = false" href="#katalog" class="group py-4 flex items-baseline justify-between hover:pl-3 transition-all duration-200">
+                        <div class="flex items-baseline gap-4">
+                            <span class="text-xs font-mono font-bold text-[#FB6C00]">02</span>
+                            <span class="font-display text-2xl text-stone-900 group-hover:text-[#FB6C00] transition-colors">Katalog Produk</span>
+                        </div>
+                        <span class="text-xs uppercase tracking-wider text-stone-400 group-hover:text-stone-900">250 ml • Rp15.000 →</span>
+                    </a>
+
+                    <a @click="menuOpen = false" href="#produksi" class="group py-4 flex items-baseline justify-between hover:pl-3 transition-all duration-200">
+                        <div class="flex items-baseline gap-4">
+                            <span class="text-xs font-mono font-bold text-[#FB6C00]">03</span>
+                            <span class="font-display text-2xl text-stone-900 group-hover:text-[#FB6C00] transition-colors">Proses Produksi</span>
+                        </div>
+                        <span class="text-xs uppercase tracking-wider text-stone-400 group-hover:text-stone-900">4 Tahap Higienis →</span>
+                    </a>
+
+                    <a @click="menuOpen = false" href="#keunggulan" class="group py-4 flex items-baseline justify-between hover:pl-3 transition-all duration-200">
+                        <div class="flex items-baseline gap-4">
+                            <span class="text-xs font-mono font-bold text-[#FB6C00]">04</span>
+                            <span class="font-display text-2xl text-stone-900 group-hover:text-[#FB6C00] transition-colors">Keunggulan Produk</span>
+                        </div>
+                        <span class="text-xs uppercase tracking-wider text-stone-400 group-hover:text-stone-900">Why Choose Us →</span>
+                    </a>
+
+                    <a @click="menuOpen = false" href="#kontak" class="group py-4 flex items-baseline justify-between hover:pl-3 transition-all duration-200">
+                        <div class="flex items-baseline gap-4">
+                            <span class="text-xs font-mono font-bold text-[#FB6C00]">05</span>
+                            <span class="font-display text-2xl text-stone-900 group-hover:text-[#FB6C00] transition-colors">Pemesanan & Kontak</span>
+                        </div>
+                        <span class="text-xs uppercase tracking-wider text-stone-400 group-hover:text-stone-900">Hubungi Kami →</span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Direct Social & Order Channels Inside Burger Menu -->
+            <div class="mt-8 space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <a
+                        href="https://wa.me/6285397873189?text=Halo%20mango.moooo!%20Saya%20ingin%20memesan%20Mango%20Jelly%20Milk."
+                        target="_blank"
+                        class="p-4 rounded-2xl bg-[#569118]/10 hover:bg-[#569118] text-stone-900 hover:text-white border border-[#569118]/30 transition-all group"
+                    >
+                        <span class="block text-[10px] font-bold uppercase tracking-wider text-[#569118] group-hover:text-[#FFDD9C]">WhatsApp Order</span>
+                        <span class="block font-bold text-sm mt-1">+62 853-9787-3189</span>
+                    </a>
+                    <a
+                        href="https://www.instagram.com/manggo.moo?xtok=MWxsd2xlcTJkc2Z0Yw=="
+                        target="_blank"
+                        class="p-4 rounded-2xl bg-[#FFDD9C]/50 hover:bg-[#FB6C00] text-stone-900 hover:text-white border border-[#F9B637] transition-all group"
+                    >
+                        <span class="block text-[10px] font-bold uppercase tracking-wider text-[#FB6C00] group-hover:text-[#FFDD9C]">Instagram Resmi</span>
+                        <span class="block font-bold text-sm mt-1">@manggo.moo</span>
+                    </a>
+                </div>
+
+                <button
+                    @click="menuOpen = false; cartOpen = true"
+                    class="w-full py-3.5 px-4 rounded-2xl bg-stone-950 hover:bg-[#FB6C00] text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                >
+                    Buka Keranjang Pesanan (<span x-text="cartCount()"></span> Botol)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- HERO SECTION: EDITORIAL BENTO LAYOUT -->
+        <section class="relative overflow-hidden bg-grid-pattern pt-8 pb-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+                    <!-- Kolom Kiri (7 Kolom): Headline & Value Proposition -->
+                    <div class="lg:col-span-7 rounded-[2rem] border border-stone-900/10 bg-white p-8 sm:p-12 shadow-xs flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#569118] via-[#F9B637] to-[#FB6C00]"></div>
+
+                        <div>
+                            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#FFDD9C]/60 border border-[#F9B637] text-stone-900 text-xs font-bold mb-7">
+                                <span class="w-2 h-2 rounded-full bg-[#569118]"></span>
+                                <span>MANGO.MOOOO • CREAMY DESSERT DRINK</span>
+                            </div>
+
+                            <h1 class="font-display text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-stone-950 leading-[1.08]">
+                                Segarnya Mangga Asli, <span class="italic font-semibold text-[#FB6C00]">Creamy-nya Susu</span> dalam Setiap Tegukan!
+                            </h1>
+
+                            <p class="mt-6 text-base sm:text-[17px] text-stone-600 leading-relaxed">
+                                Nikmati perpaduan buah mangga asli, susu creamy, jelly kenyal, dan chia seed dalam satu botol. <strong class="text-stone-900 font-semibold">Mango Jelly Milk</strong> hadir sebagai minuman dessert yang menyegarkan, lezat, dan cocok menemani aktivitasmu setiap hari.
+                            </p>
+
+                            <div class="mt-5 p-4 rounded-2xl bg-[#FFDD9C]/30 border border-[#F9B637]/60 flex items-start gap-3.5">
+                                <span class="w-8 h-8 rounded-xl bg-[#569118] text-white flex items-center justify-center shrink-0 text-sm font-bold mt-0.5">❄</span>
+                                <p class="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                                    Dibuat dari bahan berkualitas dan disajikan dalam kondisi dingin untuk memberikan kesegaran maksimal, terutama di tengah cuaca panas <strong class="text-stone-900">Kota Makassar</strong>.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Actions & Quick Metrics (Hanya Harga Satuan Rp15.000) -->
+                        <div class="mt-10 pt-8 border-t border-stone-900/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                            <div class="flex flex-wrap items-center gap-3">
+                                <a
+                                    href="#katalog"
+                                    class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-[#FB6C00] hover:bg-stone-950 text-white text-sm font-bold transition-all shadow-sm hover:shadow-md"
+                                >
+                                    <span>Pesan Sekarang</span>
+                                    <span>→</span>
+                                </a>
+                                <a
+                                    href="https://wa.me/6285397873189?text=Halo%20mango.moooo!%20Saya%20ingin%20memesan%20Mango%20Jelly%20Milk."
+                                    target="_blank"
+                                    class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-[#569118]/10 hover:bg-[#569118] text-[#569118] hover:text-white text-sm font-bold transition-all"
+                                >
+                                    <span>Chat WhatsApp</span>
+                                </a>
+                            </div>
+
+                            <div class="flex items-center gap-6">
+                                <div>
+                                    <span class="block font-display text-2xl font-bold text-[#569118]">250 ml</span>
+                                    <span class="text-xs text-stone-500 font-medium">Ukuran per Botol</span>
+                                </div>
+                                <div class="h-9 w-px bg-stone-200"></div>
+                                <div>
+                                    <span class="block font-display text-2xl font-bold text-stone-950">Rp15.000</span>
+                                    <span class="text-xs text-[#FB6C00] font-bold">Harga Satuan</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Kanan (5 Kolom): Visual Showcase Card -->
+                    <div class="lg:col-span-5 rounded-[2rem] bg-gradient-to-br from-[#FFDD9C]/70 via-[#FFDD9C]/40 to-[#F9B637]/30 border border-[#F9B637] p-7 sm:p-8 flex flex-col justify-between shadow-xs">
+
+                        <!-- Card Header -->
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="px-3 py-1 rounded-full bg-white/90 border border-stone-900/10 text-[11px] font-mono font-bold uppercase tracking-wider text-stone-800">
+                                @manggo.moo
+                            </span>
+                            <span class="px-3.5 py-1 rounded-full bg-[#569118] text-white text-xs font-bold shadow-2xs">
+                                Fresh Chilled 250ml
+                            </span>
+                        </div>
+
+                        <!-- Brand Logo Showcase -->
+                        <div class="my-6">
+                            <div class="relative w-full aspect-4/3 rounded-3xl bg-white p-6 border-2 border-white shadow-md flex items-center justify-center overflow-hidden group">
+                                <img
+                                    src="logo.png?v=2"
+                                    alt="mango.moooo — Milk, Mango & Jelly"
+                                    class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                >
+                                <div style="display:none;" class="w-full h-full rounded-2xl bg-gradient-to-b from-[#FFDD9C] via-[#F9B637] to-[#FB6C00] flex-col items-center justify-center text-center p-4">
+                                    <span class="font-display text-3xl font-bold text-white drop-shadow">mango.moooo</span>
+                                    <span class="text-xs font-bold text-stone-900 mt-2 bg-white/90 px-3.5 py-1 rounded-full">Milk, Mango & Jelly • 250ml</span>
+                                </div>
+                            </div>
+
+                            <!-- 3 Highlight Pills -->
+                            <div class="mt-4 grid grid-cols-3 gap-2.5">
+                                <div class="bg-white/90 backdrop-blur-xs border border-stone-900/10 rounded-2xl p-3 text-center">
+                                    <span class="block text-xs font-bold text-[#569118]">Real Mango</span>
+                                    <span class="block text-[11px] text-stone-500 mt-0.5">Buah Asli</span>
+                                </div>
+                                <div class="bg-white/90 backdrop-blur-xs border border-stone-900/10 rounded-2xl p-3 text-center">
+                                    <span class="block text-xs font-bold text-[#FB6C00]">UHT Creamy</span>
+                                    <span class="block text-[11px] text-stone-500 mt-0.5">Gurih Lembut</span>
+                                </div>
+                                <div class="bg-white/90 backdrop-blur-xs border border-stone-900/10 rounded-2xl p-3 text-center">
+                                    <span class="block text-xs font-bold text-stone-900">Jelly & Chia</span>
+                                    <span class="block text-[11px] text-stone-500 mt-0.5">Kaya Serat</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Instant Add Single Bottle Box -->
+                        <div class="bg-white rounded-2xl p-4 border border-stone-900/10 shadow-2xs flex items-center justify-between gap-3">
+                            <div>
+                                <p class="text-xs font-bold text-stone-900">Mango Jelly Milk (250 ml)</p>
+                                <p class="text-xs text-[#569118] font-bold mt-0.5">Rp15.000 / botol • Siap Santap Dingin</p>
+                            </div>
+                            <button
+                                @click="addToCart({ id: 'mjm-single', name: 'Mango Jelly Milk (250 ml)', price: 15000 })"
+                                class="px-4 py-2.5 rounded-xl bg-[#FB6C00] hover:bg-stone-950 text-white text-xs font-bold transition-colors shrink-0 cursor-pointer"
+                            >
+                                + Pesan
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 2: KOMPOSISI PRODUK -->
+        <section id="komposisi" class="py-24 border-t border-stone-900/10 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14">
+                    <div class="lg:col-span-6">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#569118]/10 text-[#569118] text-xs font-mono font-bold uppercase tracking-widest">
+                            01 // KOMPOSISI PRODUK
+                        </span>
+                        <h2 class="font-display text-3xl sm:text-4xl font-bold text-stone-950 mt-3 leading-tight">
+                            Tiga Perpaduan Rasa, Satu Kesegaran Istimewa.
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-6">
+                        <p class="text-sm sm:text-base text-stone-600 leading-relaxed">
+                            Mango Jelly Milk diracik dengan perpaduan bahan pilihan yang menghasilkan cita rasa manis, creamy, dan tekstur yang menyenangkan. Setiap bahan memberikan karakter tersendiri untuk menciptakan minuman yang nikmat dan menyegarkan.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    @foreach($compositions as $item)
+                    <div class="group rounded-[1.75rem] {{ $item['bg'] }} border border-stone-900/10 p-8 flex flex-col justify-between hover:-translate-y-1 hover:border-stone-900/30 hover:shadow-lg transition-all duration-300">
+                        <div>
+                            <div class="flex items-center justify-between mb-7">
+                                <span class="text-xs font-mono uppercase tracking-wider text-stone-500 font-bold">{{ $item['step'] }}</span>
+                                <span
+                                    class="px-3.5 py-1 rounded-full text-white text-[11px] font-bold shadow-2xs"
+                                    style="background-color: {{ $item['color'] }}"
+                                >
+                                    {{ $item['badge'] }}
+                                </span>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold text-stone-950 mb-3 group-hover:text-[#FB6C00] transition-colors">
+                                {{ $item['title'] }}
+                            </h3>
+                            <p class="text-sm text-stone-600 leading-relaxed">
+                                {{ $item['detail'] }}
+                            </p>
+                        </div>
+                        <div class="mt-8 pt-4 border-t border-stone-900/10 flex items-center justify-between text-xs font-bold text-[#569118]">
+                            <span>Racikan Segar Harian</span>
+                            <span>✓ 100% Pilihan</span>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 3: KATALOG PRODUK (1 PRODUK TUNGGAL TANPA OPSI 2 BOTOL) -->
+        <section id="katalog" class="py-24 border-t border-stone-900/10 bg-[#FFDD9C]/25">
+            <div class="max-w-7xl mx-auto px-4 sm:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FB6C00]/15 text-[#FB6C00] text-xs font-mono font-bold uppercase tracking-widest">
+                            02 // KATALOG PRODUK
+                        </span>
+                        <h2 class="font-display text-3xl sm:text-4xl font-bold text-stone-950 mt-3">
+                            Mango Jelly Milk.
+                        </h2>
+                    </div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-stone-900/10 text-[#569118] text-xs font-bold shadow-2xs">
+                        <span class="w-2 h-2 rounded-full bg-[#569118]"></span>
+                        <span>Ukuran 250 ml per botol • Cocok Dinikmati Saat Dingin</span>
+                    </div>
+                </div>
+
+                <!-- Kartu Katalog Tunggal -->
+                <div class="rounded-[2.25rem] border-2 border-[#F9B637] bg-white p-8 sm:p-12 shadow-md">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+                        <!-- Detail Produk (8 Kolom) -->
+                        <div class="lg:col-span-8">
+                            <div class="flex flex-wrap items-center gap-3 mb-5">
+                                <span class="px-3.5 py-1 rounded-full bg-[#569118] text-white text-xs font-bold">
+                                    Signature Dessert Drink
+                                </span>
+                                <span class="text-xs font-mono font-bold text-stone-500">
+                                    Ukuran 250 ml per botol
+                                </span>
+                            </div>
+
+                            <h3 class="font-display text-3xl sm:text-4xl font-bold text-stone-950">
+                                Mango Jelly Milk
+                            </h3>
+
+                            <p class="mt-4 text-base text-stone-600 leading-relaxed max-w-2xl">
+                                Minuman creamy dessert dengan mangga asli, susu UHT, jelly, dan chia seed. Cocok dinikmati saat dingin.
+                            </p>
+
+                            <div class="mt-6 flex flex-wrap gap-3">
+                                <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#FFDD9C]/35 border border-[#F9B637]/60 text-xs font-semibold text-stone-800">
+                                    <span class="text-[#FB6C00]">★</span>
+                                    <span>Fresh Mango • Creamy UHT Milk • Jelly & Chia Seed</span>
+                                </div>
+                                <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-stone-100 text-xs font-semibold text-stone-700">
+                                    <span>✓ Harga ramah untuk mahasiswa</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Box Harga & Tombol Order (4 Kolom) -->
+                        <div class="lg:col-span-4 rounded-3xl bg-[#FFFCF7] border border-stone-200 p-6 sm:p-8 flex flex-col justify-between">
+                            <div>
+                                <span class="block text-xs font-bold uppercase tracking-wider text-stone-400">Harga Produk</span>
+                                <div class="mt-1 flex items-baseline gap-2">
+                                    <span class="font-display text-4xl sm:text-5xl font-bold text-stone-950">
+                                        Rp15.000
+                                    </span>
+                                    <span class="text-xs font-semibold text-stone-500">/ botol (250 ml)</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 space-y-3">
+                                <button
+                                    @click="addToCart({ id: 'mjm-single', name: 'Mango Jelly Milk (250 ml)', price: 15000 })"
+                                    class="w-full py-4 px-6 rounded-2xl bg-[#FB6C00] hover:bg-stone-950 text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer shadow-sm"
+                                >
+                                    + Tambah ke Pesanan
+                                </button>
+                                <a
+                                    href="https://wa.me/6285397873189?text=Halo%20mango.moooo!%20Saya%20ingin%20memesan%20Mango%20Jelly%20Milk%20(250%20ml%20-%20Rp15.000)."
+                                    target="_blank"
+                                    class="w-full py-3.5 px-6 rounded-2xl bg-[#569118]/10 hover:bg-[#569118] text-[#569118] hover:text-white text-xs font-bold uppercase tracking-wider text-center block transition-colors"
+                                >
+                                    Pesan Langsung via WA →
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 4: PROSES PRODUKSI (PRODUCTION PROCESS) -->
+        <section id="produksi" class="py-24 border-t border-stone-900/10 bg-stone-950 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14">
+                    <div class="lg:col-span-6">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#F9B637] text-xs font-mono font-bold uppercase tracking-widest">
+                            03 // PRODUCTION PROCESS
+                        </span>
+                        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-3 leading-tight">
+                            Dibuat dengan Bahan Pilihan, Diproses dengan Sepenuh Hati.
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-6">
+                        <p class="text-sm sm:text-base text-stone-300 leading-relaxed">
+                            Kami mengutamakan kualitas bahan dan kebersihan dalam setiap proses pembuatan Mango Jelly Milk. Produksi dilakukan secara fresh setiap hari untuk menjaga kualitas rasa dan kesegaran produk sebelum sampai ke tangan pelanggan.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    @foreach($processes as $proc)
+                    <div class="rounded-3xl bg-white/[0.04] border border-white/10 p-7 flex flex-col justify-between hover:bg-white/[0.07] hover:border-[#F9B637]/60 transition-all duration-300">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="px-3 py-1 rounded-lg bg-[#FB6C00] text-white text-xs font-mono font-bold">
+                                    TAHAP {{ $proc['no'] }}
+                                </span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-[#569118]"></span>
+                            </div>
+                            <h3 class="font-display text-xl font-bold text-[#FFDD9C] mb-3">
+                                {{ $proc['title'] }}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                                {{ $proc['desc'] }}
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-[#F9B637]">
+                            <span>FRESH DAILY</span>
+                            <span>✓ QC PASSED</span>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 5: KEUNGGULAN PRODUK (WHY CHOOSE US?) -->
+        <section id="keunggulan" class="py-24 border-t border-stone-900/10 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-8">
+                <div class="max-w-2xl mb-14">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#569118]/10 text-[#569118] text-xs font-mono font-bold uppercase tracking-widest">
+                        04 // WHY CHOOSE US?
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-stone-950 mt-3">
+                        Kenapa Harus Mango Jelly Milk?
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    @foreach($advantages as $adv)
+                    <div class="rounded-3xl bg-[#FFFCF7] border border-stone-900/10 {{ $adv['accent'] }} p-7 hover:bg-[#FFDD9C]/20 hover:shadow-md transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="font-display text-xl font-bold text-stone-950">
+                                {{ $adv['title'] }}
+                            </h3>
+                            <span class="w-6 h-6 rounded-full bg-[#FFDD9C] text-[#FB6C00] text-xs font-bold flex items-center justify-center">✓</span>
+                        </div>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            {{ $adv['desc'] }}
+                        </p>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 6: PEMESANAN & KONTAK LANGSUNG (IG & WHATSAPP) -->
+        <section id="kontak" class="py-24 border-t border-stone-900/10 bg-[#FFDD9C]/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-8">
+                <div class="rounded-[2.25rem] bg-white border-2 border-[#F9B637] p-8 sm:p-12 shadow-sm">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+                        <!-- Left CTA Description -->
+                        <div class="lg:col-span-7">
+                            <span class="inline-block px-3.5 py-1 rounded-full bg-[#569118] text-white text-xs font-bold uppercase tracking-wider mb-4">
+                                05 // Order & Contact
+                            </span>
+                            <h2 class="font-display text-3xl sm:text-4xl font-bold text-stone-950 leading-tight">
+                                Yuk, Nikmati Kesegaran Mango Jelly Milk!
+                            </h2>
+                            <p class="mt-4 text-sm sm:text-base text-stone-600 leading-relaxed">
+                                Jangan lewatkan kesegaran Mango Jelly Milk! Nikmati perpaduan mangga asli, susu creamy, jelly, dan chia seed yang cocok menemani aktivitasmu. Pesan sekarang dan rasakan kesegarannya bersama teman maupun keluarga.
+                            </p>
+
+                            <div class="mt-8 flex flex-wrap gap-3.5">
+                                <a
+                                    href="https://wa.me/6285397873189?text=Halo%20mango.moooo!%20Saya%20ingin%20memesan%20Mango%20Jelly%20Milk."
+                                    target="_blank"
+                                    class="inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-[#569118] hover:bg-stone-950 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
+                                >
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                    <span>Order via WhatsApp</span>
+                                </a>
+
+                                <button
+                                    @click="cartOpen = true"
+                                    class="px-7 py-4 rounded-2xl bg-[#FB6C00] hover:bg-stone-950 text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-sm"
+                                >
+                                    Pesan Lewat Keranjang Web
+                                </button>
+
+                                <a
+                                    href="https://www.instagram.com/manggo.moo?xtok=MWxsd2xlcTJkc2Z0Yw=="
+                                    target="_blank"
+                                    class="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-[#FFDD9C]/60 hover:bg-[#F9B637] text-stone-950 text-xs font-bold uppercase tracking-wider transition-all"
+                                >
+                                    <span>Instagram @manggo.moo</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Interactive Contact Details Card -->
+                        <div class="lg:col-span-5 bg-[#FFFCF7] rounded-3xl border border-stone-900/10 p-6 sm:p-8 space-y-4">
+                            <div class="flex items-center justify-between border-b border-stone-200 pb-4">
+                                <h3 class="font-display text-xl font-bold text-stone-950">Informasi Kontak</h3>
+                                <span class="px-2.5 py-1 rounded-full bg-[#FFDD9C] text-stone-900 text-[10px] font-bold uppercase">Fast Response</span>
+                            </div>
+
+                            <div class="p-3.5 rounded-2xl bg-white border border-stone-200/80">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-stone-400">Nama Usaha</span>
+                                <span class="text-sm sm:text-base font-bold text-stone-950">mango.moooo (Mango Jelly Milk)</span>
+                            </div>
+
+                            <a
+                                href="https://wa.me/6285397873189?text=Halo%20mango.moooo!%20Saya%20ingin%20memesan%20Mango%20Jelly%20Milk."
+                                target="_blank"
+                                class="block p-3.5 rounded-2xl bg-white border border-stone-200/80 hover:border-[#569118] transition-colors group"
+                            >
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-stone-400">WhatsApp Pemesanan</span>
+                                <div class="flex items-center justify-between mt-0.5">
+                                    <span class="text-sm sm:text-base font-bold text-[#569118] group-hover:underline">+62 853-9787-3189</span>
+                                    <span class="text-xs font-bold text-[#569118]">Chat →</span>
+                                </div>
+                            </a>
+
+                            <a
+                                href="https://www.instagram.com/manggo.moo?xtok=MWxsd2xlcTJkc2Z0Yw=="
+                                target="_blank"
+                                class="block p-3.5 rounded-2xl bg-white border border-stone-200/80 hover:border-[#FB6C00] transition-colors group"
+                            >
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-stone-400">Instagram Resmi</span>
+                                <div class="flex items-center justify-between mt-0.5">
+                                    <span class="text-sm sm:text-base font-bold text-[#FB6C00] group-hover:underline">@manggo.moo</span>
+                                    <span class="text-xs font-bold text-[#FB6C00]">Buka IG ↗</span>
+                                </div>
+                            </a>
+
+                            <div class="p-3.5 rounded-2xl bg-white border border-stone-200/80">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-stone-400">Lokasi</span>
+                                <span class="text-sm sm:text-base font-bold text-stone-800">Makassar, Sulawesi Selatan</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-stone-950 text-white border-t border-stone-800 py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div>
+                <span class="font-display text-2xl font-bold text-[#FFDD9C]">mango<span class="text-[#FB6C00]">.moooo</span></span>
+                <p class="text-xs text-stone-400 mt-1.5">
+                    Milk, Mango & Jelly • Makassar, Sulawesi Selatan
+                </p>
+                <div class="flex flex-wrap items-center gap-4 mt-3 text-xs font-semibold text-[#F9B637]">
+                    <a href="https://www.instagram.com/manggo.moo?xtok=MWxsd2xlcTJkc2Z0Yw==" target="_blank" class="hover:underline">Instagram: @manggo.moo</a>
+                    <span>•</span>
+                    <a href="https://wa.me/6285397873189" target="_blank" class="hover:underline">WA: +62 853-9787-3189</a>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-6 text-xs font-medium text-stone-400">
+                <a href="#komposisi" class="hover:text-[#F9B637] transition-colors">Komposisi</a>
+                <a href="#katalog" class="hover:text-[#F9B637] transition-colors">Katalog</a>
+                <a href="#produksi" class="hover:text-[#F9B637] transition-colors">Proses Produksi</a>
+                <a href="#keunggulan" class="hover:text-[#F9B637] transition-colors">Keunggulan</a>
+                <a href="#kontak" class="hover:text-[#F9B637] transition-colors">Pemesanan</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SLIDE-OVER CART DRAWER -->
+    <div
+        x-show="cartOpen"
+        x-cloak
+        class="fixed inset-0 z-50 flex justify-end"
+    >
+        <div
+            x-show="cartOpen"
+            x-transition.opacity
+            @click="cartOpen = false"
+            class="fixed inset-0 bg-stone-950/50 backdrop-blur-xs"
+        ></div>
+
+        <div
+            x-show="cartOpen"
+            x-transition:enter="transition transform ease-out duration-300"
+            x-transition:enter-start="translate-x-full"
+            x-transition:enter-end="translate-x-0"
+            x-transition:leave="transition transform ease-in duration-200"
+            x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full"
+            class="relative w-full max-w-md bg-white h-full p-6 sm:p-8 flex flex-col justify-between border-l border-stone-900/10 shadow-2xl overflow-y-auto"
+        >
+            <div>
+                <div class="flex items-center justify-between pb-5 border-b border-stone-900/10">
+                    <div>
+                        <h3 class="font-display text-2xl font-bold text-stone-950">Keranjang Pesanan</h3>
+                        <p class="text-xs text-[#569118] font-semibold mt-0.5">Terhubung ke WhatsApp +62 853-9787-3189</p>
+                    </div>
+                    <button
+                        @click="cartOpen = false"
+                        class="px-3 py-1.5 rounded-xl border border-stone-200 text-xs font-bold hover:bg-stone-100 cursor-pointer"
+                    >
+                        Tutup ✕
+                    </button>
+                </div>
+
+                <!-- Daftar Item Keranjang -->
+                <div class="mt-6 space-y-3.5 max-h-[42vh] overflow-y-auto pr-1">
+                    <template x-if="cart.length === 0">
+                        <div class="py-12 px-4 text-center rounded-2xl bg-[#FFDD9C]/25 border border-dashed border-[#F9B637]">
+                            <p class="text-sm font-bold text-stone-800">Keranjangmu masih kosong</p>
+                            <p class="text-xs text-stone-500 mt-1">Tambahkan Mango Jelly Milk (250 ml — Rp15.000) untuk memesan.</p>
+                        </div>
+                    </template>
+
+                    <template x-for="(item, index) in cart" :key="item.id">
+                        <div class="p-4 rounded-2xl border border-stone-200 bg-[#FFFCF7] flex items-center justify-between gap-4">
+                            <div>
+                                <p class="text-sm font-bold text-stone-900" x-text="item.name"></p>
+                                <p class="text-xs text-[#FB6C00] font-bold mt-0.5" x-text="formatRupiah(item.price * item.qty)"></p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button @click="decreaseQty(index)" class="w-7 h-7 rounded-lg bg-white border border-stone-300 hover:border-stone-900 text-xs font-bold cursor-pointer">-</button>
+                                <span class="text-xs font-bold w-5 text-center" x-text="item.qty"></span>
+                                <button @click="increaseQty(index)" class="w-7 h-7 rounded-lg bg-white border border-stone-300 hover:border-stone-900 text-xs font-bold cursor-pointer">+</button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Input Nama & Catatan Pengiriman -->
+                <div x-show="cart.length > 0" class="mt-6 pt-5 border-t border-stone-200 space-y-3">
+                    <div>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-600 mb-1">Nama Pemesan (Opsional)</label>
+                        <input
+                            type="text"
+                            x-model="buyerName"
+                            placeholder="Contoh: Budi"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:border-[#FB6C00]"
+                        >
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-600 mb-1">Lokasi / Catatan Pesanan (Opsional)</label>
+                        <input
+                            type="text"
+                            x-model="buyerNote"
+                            placeholder="Contoh: Ambil di tempat / Antarkan ke Kampus"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:border-[#FB6C00]"
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Total & Tombol Checkout WA -->
+            <div class="pt-5 border-t border-stone-900/10 mt-6">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs uppercase tracking-wider text-stone-500 font-bold">Total Pembayaran</span>
+                    <span class="font-display text-2xl font-bold text-stone-950" x-text="formatRupiah(cartTotal())"></span>
+                </div>
+                <button
+                    @click="checkoutWhatsApp()"
+                    :disabled="cart.length === 0"
+                    :class="cart.length === 0 ? 'opacity-40 cursor-not-allowed bg-stone-400' : 'bg-[#569118] hover:bg-stone-950 cursor-pointer'"
+                    class="w-full py-4 rounded-2xl text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm"
+                >
+                    Kirim Pesanan ke WhatsApp →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALPINE.JS STATE -->
+    <script>
+        function mangoStore() {
+            return {
+                menuOpen: false,
+                cartOpen: false,
+                buyerName: '',
+                buyerNote: '',
+                cart: [
+                    { id: 'mjm-single', name: 'Mango Jelly Milk (250 ml)', price: 15000, qty: 1 }
+                ],
+                addToCart(product) {
+                    const existing = this.cart.find(item => item.id === product.id);
+                    if (existing) {
+                        existing.qty++;
+                    } else {
+                        this.cart.push({ ...product, qty: 1 });
                     }
+                    this.cartOpen = true;
+                },
+                increaseQty(index) {
+                    this.cart[index].qty++;
+                },
+                decreaseQty(index) {
+                    if (this.cart[index].qty > 1) {
+                        this.cart[index].qty--;
+                    } else {
+                        this.cart.splice(index, 1);
+                    }
+                },
+                cartCount() {
+                    return this.cart.reduce((sum, item) => sum + item.qty, 0);
+                },
+                cartTotal() {
+                    return this.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                },
+                formatRupiah(number) {
+                    return 'Rp' + number.toLocaleString('id-ID');
+                },
+                checkoutWhatsApp() {
+                    if (this.cart.length === 0) return;
+                    let lines = ['Halo *mango.moooo* Makassar! Saya ingin memesan:'];
+                    lines.push('');
+                    this.cart.forEach(item => {
+                        lines.push(`• ${item.qty}x ${item.name} — ${this.formatRupiah(item.price * item.qty)}`);
+                    });
+                    lines.push('');
+                    lines.push(`*Total Pembayaran: ${this.formatRupiah(this.cartTotal())}*`);
+
+                    if (this.buyerName.trim() !== '') {
+                        lines.push(`Nama Pemesan: ${this.buyerName.trim()}`);
+                    }
+                    if (this.buyerNote.trim() !== '') {
+                        lines.push(`Catatan/Lokasi: ${this.buyerNote.trim()}`);
+                    }
+
+                    const url = `https://wa.me/6285397873189?text=${encodeURIComponent(lines.join('\n'))}`;
+                    window.open(url, '_blank');
                 }
             }
         }
-    }
-</script>
-HTML;
-
-$blade = preg_replace('/@vite\(.*?\)/', $tailwindSetup, $blade);
-$blade = preg_replace('/@foreach\s*\((.*?)\)/', '<?php foreach($1): ?>', $blade);
-$blade = str_replace('@endforeach', '<?php endforeach; ?>', $blade);
-$blade = preg_replace('/@if\s*\((.*?)\)/', '<?php if($1): ?>', $blade);
-$blade = str_replace('@endif', '<?php endif; ?>', $blade);
-$blade = preg_replace('/\{\{\s*(.*?)\s*\}\}/', '<?= htmlspecialchars((string)($1), ENT_QUOTES, "UTF-8") ?>', $blade);
-
-ob_start();
-eval('?>' . $blade);
-$htmlOutput = ob_get_clean();
-
-if (!is_dir(__DIR__ . '/docs')) {
-    mkdir(__DIR__ . '/docs', 0755, true);
-}
-
-file_put_contents(__DIR__ . '/docs/index.html', $htmlOutput);
-
-if (file_exists(__DIR__ . '/public/logo.png')) {
-    copy(__DIR__ . '/public/logo.png', __DIR__ . '/docs/logo.png');
-}
-
-echo "Berhasil memperbarui docs/index.html tanpa promo bundling!\n";
+    </script>
+</body>
+</html>

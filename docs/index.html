@@ -96,7 +96,7 @@
             <!-- Center Quick Navigation (Desktop) -->
             <nav class="hidden lg:flex items-center gap-1 bg-stone-100/80 p-1.5 rounded-full border border-stone-200/80 text-xs font-semibold text-stone-700">
                 <a href="#komposisi" class="px-4 py-1.5 rounded-full hover:bg-white hover:text-stone-950 hover:shadow-2xs transition-all">Komposisi</a>
-                <a href="#katalog" class="px-4 py-1.5 rounded-full hover:bg-white hover:text-stone-950 hover:shadow-2xs transition-all">Katalog Harga</a>
+                <a href="#katalog" class="px-4 py-1.5 rounded-full hover:bg-white hover:text-stone-950 hover:shadow-2xs transition-all">Katalog</a>
                 <a href="#produksi" class="px-4 py-1.5 rounded-full hover:bg-white hover:text-stone-950 hover:shadow-2xs transition-all">Proses Produksi</a>
                 <a href="#keunggulan" class="px-4 py-1.5 rounded-full hover:bg-white hover:text-stone-950 hover:shadow-2xs transition-all">Keunggulan</a>
                 <a href="#kontak" class="px-4 py-1.5 rounded-full hover:bg-white hover:text-[#FB6C00] hover:shadow-2xs transition-all">Kontak</a>
@@ -104,7 +104,6 @@
 
             <!-- Right Controls: Cart Trigger & Architectural Burger Button -->
             <div class="flex items-center gap-2.5">
-                <!-- Tombol Keranjang -->
                 <button
                     @click="cartOpen = true; menuOpen = false"
                     class="relative inline-flex items-center gap-2.5 pl-4 pr-3 py-2.5 rounded-full bg-[#FFDD9C]/70 hover:bg-[#F9B637] text-stone-950 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-2xs"
@@ -119,7 +118,6 @@
                     >0</span>
                 </button>
 
-                <!-- Tombol Interactive Burger Menu -->
                 <button
                     @click="menuOpen = !menuOpen; cartOpen = false"
                     :aria-expanded="menuOpen"
@@ -156,7 +154,6 @@
         x-cloak
         class="fixed inset-0 z-40 flex justify-end"
     >
-        <!-- Backdrop -->
         <div
             x-show="menuOpen"
             x-transition.opacity
@@ -164,7 +161,6 @@
             class="fixed inset-0 bg-stone-950/50 backdrop-blur-xs"
         ></div>
 
-        <!-- Drawer Panel -->
         <div
             x-show="menuOpen"
             x-transition:enter="transition transform ease-out duration-300"
@@ -193,9 +189,9 @@
                     <a @click="menuOpen = false" href="#katalog" class="group py-4 flex items-baseline justify-between hover:pl-3 transition-all duration-200">
                         <div class="flex items-baseline gap-4">
                             <span class="text-xs font-mono font-bold text-[#FB6C00]">02</span>
-                            <span class="font-display text-2xl text-stone-900 group-hover:text-[#FB6C00] transition-colors">Katalog & Promo Bundling</span>
+                            <span class="font-display text-2xl text-stone-900 group-hover:text-[#FB6C00] transition-colors">Katalog Produk</span>
                         </div>
-                        <span class="text-xs uppercase tracking-wider text-stone-400 group-hover:text-stone-900">Rp15.000 / Rp25.000 →</span>
+                        <span class="text-xs uppercase tracking-wider text-stone-400 group-hover:text-stone-900">250 ml • Rp15.000 →</span>
                     </a>
 
                     <a @click="menuOpen = false" href="#produksi" class="group py-4 flex items-baseline justify-between hover:pl-3 transition-all duration-200">
@@ -249,7 +245,7 @@
                     @click="menuOpen = false; cartOpen = true"
                     class="w-full py-3.5 px-4 rounded-2xl bg-stone-950 hover:bg-[#FB6C00] text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                 >
-                    Buka Keranjang Pesanan (<span x-text="cartCount()"></span> Item)
+                    Buka Keranjang Pesanan (<span x-text="cartCount()"></span> Botol)
                 </button>
             </div>
         </div>
@@ -263,7 +259,6 @@
 
                     <!-- Kolom Kiri (7 Kolom): Headline & Value Proposition -->
                     <div class="lg:col-span-7 rounded-[2rem] border border-stone-900/10 bg-white p-8 sm:p-12 shadow-xs flex flex-col justify-between relative overflow-hidden">
-                        <!-- Subtle Top Accent Line -->
                         <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#569118] via-[#F9B637] to-[#FB6C00]"></div>
 
                         <div>
@@ -288,7 +283,7 @@
                             </div>
                         </div>
 
-                        <!-- Bottom Actions & Quick Metrics -->
+                        <!-- Bottom Actions & Quick Metrics (Hanya Harga Satuan Rp15.000) -->
                         <div class="mt-10 pt-8 border-t border-stone-900/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                             <div class="flex flex-wrap items-center gap-3">
                                 <a
@@ -309,13 +304,13 @@
 
                             <div class="flex items-center gap-6">
                                 <div>
-                                    <span class="block font-display text-2xl font-bold text-stone-950">Rp15.000</span>
-                                    <span class="text-xs text-stone-500 font-medium">Botol 250 ml</span>
+                                    <span class="block font-display text-2xl font-bold text-[#569118]">250 ml</span>
+                                    <span class="text-xs text-stone-500 font-medium">Ukuran per Botol</span>
                                 </div>
                                 <div class="h-9 w-px bg-stone-200"></div>
                                 <div>
-                                    <span class="block font-display text-2xl font-bold text-[#FB6C00]">Rp25.000</span>
-                                    <span class="text-xs text-[#569118] font-bold">Promo 2 Botol</span>
+                                    <span class="block font-display text-2xl font-bold text-stone-950">Rp15.000</span>
+                                    <span class="text-xs text-[#FB6C00] font-bold">Harga Satuan</span>
                                 </div>
                             </div>
                         </div>
@@ -366,20 +361,17 @@
                             </div>
                         </div>
 
-                        <!-- Instant Promo Bundle Box -->
+                        <!-- Instant Add Single Bottle Box -->
                         <div class="bg-white rounded-2xl p-4 border border-stone-900/10 shadow-2xs flex items-center justify-between gap-3">
                             <div>
-                                <div class="flex items-center gap-2">
-                                    <span class="px-2 py-0.5 rounded-md bg-[#FB6C00]/15 text-[#FB6C00] text-[10px] font-bold uppercase">Best Value</span>
-                                    <p class="text-xs font-bold text-stone-900">Bundling 2 Botol</p>
-                                </div>
-                                <p class="text-xs text-[#569118] font-bold mt-0.5">Cuman Rp25.000 <span class="text-stone-400 line-through font-normal">Rp30.000</span></p>
+                                <p class="text-xs font-bold text-stone-900">Mango Jelly Milk (250 ml)</p>
+                                <p class="text-xs text-[#569118] font-bold mt-0.5">Rp15.000 / botol • Siap Santap Dingin</p>
                             </div>
                             <button
-                                @click="addToCart({ id: 'mjm-bundling', name: 'Promo Bundling (2 Botol Mango Jelly Milk)', price: 25000 })"
+                                @click="addToCart({ id: 'mjm-single', name: 'Mango Jelly Milk (250 ml)', price: 15000 })"
                                 class="px-4 py-2.5 rounded-xl bg-[#FB6C00] hover:bg-stone-950 text-white text-xs font-bold transition-colors shrink-0 cursor-pointer"
                             >
-                                + Ambil Promo
+                                + Pesan
                             </button>
                         </div>
                     </div>
@@ -472,129 +464,89 @@
             </div>
         </section>
 
-        <!-- BAGIAN 3: KATALOG & PROMO BUNDLING -->
+        <!-- BAGIAN 3: KATALOG PRODUK (1 PRODUK TUNGGAL TANPA OPSI 2 BOTOL) -->
         <section id="katalog" class="py-24 border-t border-stone-900/10 bg-[#FFDD9C]/25">
             <div class="max-w-7xl mx-auto px-4 sm:px-8">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                     <div>
                         <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FB6C00]/15 text-[#FB6C00] text-xs font-mono font-bold uppercase tracking-widest">
-                            02 // KATALOG HARGA
+                            02 // KATALOG PRODUK
                         </span>
                         <h2 class="font-display text-3xl sm:text-4xl font-bold text-stone-950 mt-3">
-                            Pilih Paket Kesegaranmu.
+                            Mango Jelly Milk.
                         </h2>
                     </div>
                     <div class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-stone-900/10 text-[#569118] text-xs font-bold shadow-2xs">
                         <span class="w-2 h-2 rounded-full bg-[#569118]"></span>
-                        <span>Kemasan Botol 250 ml • Siap Santap Dingin</span>
+                        <span>Ukuran 250 ml per botol • Cocok Dinikmati Saat Dingin</span>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                                        <div class="rounded-[2rem] border-2 border-stone-900/10 bg-white/90 shadow-xs p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden transition-all hover:shadow-xl">
+                <!-- Kartu Katalog Tunggal -->
+                <div class="rounded-[2.25rem] border-2 border-[#F9B637] bg-white p-8 sm:p-12 shadow-md">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
-                        
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-6">
-                                <span class="text-xs font-mono font-bold text-stone-400">MENU // 01</span>
-                                <span class="px-3.5 py-1 rounded-full bg-[#569118]/15 text-[#569118] text-xs font-bold">
-                                    Single Bottle                                </span>
+                        <!-- Detail Produk (8 Kolom) -->
+                        <div class="lg:col-span-8">
+                            <div class="flex flex-wrap items-center gap-3 mb-5">
+                                <span class="px-3.5 py-1 rounded-full bg-[#569118] text-white text-xs font-bold">
+                                    Signature Dessert Drink
+                                </span>
+                                <span class="text-xs font-mono font-bold text-stone-500">
+                                    Ukuran 250 ml per botol
+                                </span>
                             </div>
 
-                            <h3 class="font-display text-3xl font-bold text-stone-950">Mango Jelly Milk</h3>
-                            <p class="text-xs font-bold uppercase tracking-wider text-[#569118] mt-1.5">Ukuran 250 ml per botol</p>
+                            <h3 class="font-display text-3xl sm:text-4xl font-bold text-stone-950">
+                                Mango Jelly Milk
+                            </h3>
 
-                            <p class="mt-4 text-sm sm:text-base text-stone-600 leading-relaxed">
-                                Minuman creamy dessert dengan mangga asli, susu UHT, jelly, dan chia seed. Cocok dinikmati saat dingin.                            </p>
+                            <p class="mt-4 text-base text-stone-600 leading-relaxed max-w-2xl">
+                                Minuman creamy dessert dengan mangga asli, susu UHT, jelly, dan chia seed. Cocok dinikmati saat dingin.
+                            </p>
 
-                            <div class="mt-6 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#FFDD9C]/35 border border-[#F9B637]/50 text-xs font-semibold text-stone-800">
-                                <span class="text-[#FB6C00]">★</span>
-                                <span>Ramah di kantong mahasiswa</span>
+                            <div class="mt-6 flex flex-wrap gap-3">
+                                <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#FFDD9C]/35 border border-[#F9B637]/60 text-xs font-semibold text-stone-800">
+                                    <span class="text-[#FB6C00]">★</span>
+                                    <span>Fresh Mango • Creamy UHT Milk • Jelly & Chia Seed</span>
+                                </div>
+                                <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-stone-100 text-xs font-semibold text-stone-700">
+                                    <span>✓ Harga ramah untuk mahasiswa</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="mt-8 pt-6 border-t border-stone-900/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <!-- Box Harga & Tombol Order (4 Kolom) -->
+                        <div class="lg:col-span-4 rounded-3xl bg-[#FFFCF7] border border-stone-200 p-6 sm:p-8 flex flex-col justify-between">
                             <div>
-                                <span class="block text-xs text-stone-500 font-medium">Harga Paket</span>
-                                <div class="flex items-baseline gap-2.5">
-                                    <span class="font-display text-3xl sm:text-4xl font-bold text-stone-950">
-                                        Rp15.000                                    </span>
-                                                                    </div>
+                                <span class="block text-xs font-bold uppercase tracking-wider text-stone-400">Harga Produk</span>
+                                <div class="mt-1 flex items-baseline gap-2">
+                                    <span class="font-display text-4xl sm:text-5xl font-bold text-stone-950">
+                                        Rp15.000
+                                    </span>
+                                    <span class="text-xs font-semibold text-stone-500">/ botol (250 ml)</span>
+                                </div>
                             </div>
 
-                            <div class="flex items-center gap-2.5">
+                            <div class="mt-8 space-y-3">
                                 <button
-                                    @click="addToCart({ id: 'mjm-single', name: 'Mango Jelly Milk', price: 15000 })"
-                                    class="flex-1 sm:flex-initial px-6 py-4 rounded-2xl bg-[#569118] hover:bg-stone-950 text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                                    @click="addToCart({ id: 'mjm-single', name: 'Mango Jelly Milk (250 ml)', price: 15000 })"
+                                    class="w-full py-4 px-6 rounded-2xl bg-[#FB6C00] hover:bg-stone-950 text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer shadow-sm"
                                 >
-                                    + Keranjang
+                                    + Tambah ke Pesanan
                                 </button>
                                 <a
-                                    href="https://wa.me/6285397873189?text=Halo+mango.moooo%21+Saya+ingin+pesan+langsung%3A+1x+Mango+Jelly+Milk+%28Rp15.000%29"
+                                    href="https://wa.me/6285397873189?text=Halo%20mango.moooo!%20Saya%20ingin%20memesan%20Mango%20Jelly%20Milk%20(250%20ml%20-%20Rp15.000)."
                                     target="_blank"
-                                    title="Pesan Langsung via WhatsApp"
-                                    class="px-4 py-4 rounded-2xl border border-stone-300 hover:border-[#569118] hover:bg-[#569118]/10 text-stone-700 hover:text-[#569118] text-xs font-bold transition-colors"
+                                    class="w-full py-3.5 px-6 rounded-2xl bg-[#569118]/10 hover:bg-[#569118] text-[#569118] hover:text-white text-xs font-bold uppercase tracking-wider text-center block transition-colors"
                                 >
-                                    WA →
+                                    Pesan Langsung via WA →
                                 </a>
                             </div>
                         </div>
+
                     </div>
-                                        <div class="rounded-[2rem] border-2 border-[#FB6C00] bg-white shadow-md p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden transition-all hover:shadow-xl">
-
-                                                <div class="absolute top-0 right-0 bg-[#FB6C00] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl">
-                            Paling Diminati
-                        </div>
-                        
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-6">
-                                <span class="text-xs font-mono font-bold text-stone-400">MENU // 02</span>
-                                <span class="px-3.5 py-1 rounded-full bg-[#FFDD9C] text-stone-950 border border-[#F9B637] text-xs font-bold">
-                                    Hemat Rp5.000                                </span>
-                            </div>
-
-                            <h3 class="font-display text-3xl font-bold text-stone-950">Promo Bundling (2 Botol)</h3>
-                            <p class="text-xs font-bold uppercase tracking-wider text-[#569118] mt-1.5">2 Botol × 250 ml</p>
-
-                            <p class="mt-4 text-sm sm:text-base text-stone-600 leading-relaxed">
-                                2 Botol Mango Jelly Milk cuman Rp25.000. Lebih hemat untuk dinikmati bersama teman.                            </p>
-
-                            <div class="mt-6 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#FFDD9C]/35 border border-[#F9B637]/50 text-xs font-semibold text-stone-800">
-                                <span class="text-[#FB6C00]">★</span>
-                                <span>Paket paling favorit untuk berdua</span>
-                            </div>
-                        </div>
-
-                        <div class="mt-8 pt-6 border-t border-stone-900/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                            <div>
-                                <span class="block text-xs text-stone-500 font-medium">Harga Paket</span>
-                                <div class="flex items-baseline gap-2.5">
-                                    <span class="font-display text-3xl sm:text-4xl font-bold text-stone-950">
-                                        Rp25.000                                    </span>
-                                                                        <span class="text-sm text-stone-400 line-through font-semibold">
-                                        Rp30.000                                    </span>
-                                                                    </div>
-                            </div>
-
-                            <div class="flex items-center gap-2.5">
-                                <button
-                                    @click="addToCart({ id: 'mjm-bundling', name: 'Promo Bundling (2 Botol)', price: 25000 })"
-                                    class="flex-1 sm:flex-initial px-6 py-4 rounded-2xl bg-[#FB6C00] hover:bg-stone-950 text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
-                                >
-                                    + Keranjang
-                                </button>
-                                <a
-                                    href="https://wa.me/6285397873189?text=Halo+mango.moooo%21+Saya+ingin+pesan+langsung%3A+1x+Promo+Bundling+%282+Botol%29+%28Rp25.000%29"
-                                    target="_blank"
-                                    title="Pesan Langsung via WhatsApp"
-                                    class="px-4 py-4 rounded-2xl border border-stone-300 hover:border-[#569118] hover:bg-[#569118]/10 text-stone-700 hover:text-[#569118] text-xs font-bold transition-colors"
-                                >
-                                    WA →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                                    </div>
+                </div>
             </div>
         </section>
 
@@ -880,7 +832,7 @@
         </div>
     </footer>
 
-    <!-- SLIDE-OVER CART DRAWER (DENGAN CHECKOUT WA +62 853-9787-3189) -->
+    <!-- SLIDE-OVER CART DRAWER -->
     <div
         x-show="cartOpen"
         x-cloak
@@ -922,7 +874,7 @@
                     <template x-if="cart.length === 0">
                         <div class="py-12 px-4 text-center rounded-2xl bg-[#FFDD9C]/25 border border-dashed border-[#F9B637]">
                             <p class="text-sm font-bold text-stone-800">Keranjangmu masih kosong</p>
-                            <p class="text-xs text-stone-500 mt-1">Pilih paket Mango Jelly Milk Rp15.000 atau Promo Bundling 2 Botol Rp25.000.</p>
+                            <p class="text-xs text-stone-500 mt-1">Tambahkan Mango Jelly Milk (250 ml — Rp15.000) untuk memesan.</p>
                         </div>
                     </template>
 
@@ -957,7 +909,7 @@
                         <input
                             type="text"
                             x-model="buyerNote"
-                            placeholder="Contoh: Ambil di tempat / Antarkan ke Kampus UNM"
+                            placeholder="Contoh: Ambil di tempat / Antarkan ke Kampus"
                             class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:border-[#FB6C00]"
                         >
                     </div>
