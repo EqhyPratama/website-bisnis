@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mango.moooo — Milk, Mango & Jelly | Makassar</title>
-    
+
     <!-- Google Fonts: Plus Jakarta Sans & Fraunces -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,8 +43,8 @@
         }
     </style>
 </head>
-<body 
-    x-data="mangoStore()" 
+<body
+    x-data="mangoStore()"
     :class="{ 'overflow-hidden': menuOpen || cartOpen }"
     class="bg-[#FFFCF7] text-stone-900 font-sans antialiased selection:bg-[#F9B637] selection:text-stone-950"
 >
@@ -71,13 +71,13 @@
     <!-- 2. MODERN GLASSMORPHIC HEADER & INTERACTIVE BURGER MENU -->
     <header class="sticky top-0 z-50 bg-white/85 backdrop-blur-xl border-b border-stone-900/10 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
-            
+
             <!-- Brand Identity -->
             <a href="#" class="flex items-center gap-3.5 group">
                 <div class="h-12 px-2.5 rounded-2xl bg-white border border-stone-200 group-hover:border-[#FB6C00] overflow-hidden flex items-center justify-center shrink-0 shadow-2xs transition-colors">
-                    <img 
-                        src="logo.png?v=2" 
-                        alt="mango.moooo Logo" 
+                    <img
+                        src="logo.png?v=2"
+                        alt="mango.moooo Logo"
                         class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                     >
@@ -105,7 +105,7 @@
             <!-- Right Controls: Cart Trigger & Architectural Burger Button -->
             <div class="flex items-center gap-2.5">
                 <!-- Tombol Keranjang -->
-                <button 
+                <button
                     @click="cartOpen = true; menuOpen = false"
                     class="relative inline-flex items-center gap-2.5 pl-4 pr-3 py-2.5 rounded-full bg-[#FFDD9C]/70 hover:bg-[#F9B637] text-stone-950 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-2xs"
                 >
@@ -113,34 +113,34 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                     </svg>
                     <span class="hidden sm:inline">Pesanan</span>
-                    <span 
-                        x-text="cartCount()" 
+                    <span
+                        x-text="cartCount()"
                         class="w-5 h-5 rounded-full bg-[#FB6C00] text-white text-[11px] flex items-center justify-center font-bold"
                     >0</span>
                 </button>
 
                 <!-- Tombol Interactive Burger Menu -->
-                <button 
+                <button
                     @click="menuOpen = !menuOpen; cartOpen = false"
                     :aria-expanded="menuOpen"
                     aria-label="Toggle Navigation Menu"
                     class="group relative inline-flex items-center gap-3 pl-4 pr-3.5 py-2.5 rounded-full border border-stone-900/15 hover:border-stone-900 bg-white text-stone-900 transition-all duration-300 cursor-pointer shadow-2xs"
                 >
-                    <span 
-                        x-text="menuOpen ? 'Tutup' : 'Menu'" 
+                    <span
+                        x-text="menuOpen ? 'Tutup' : 'Menu'"
                         class="text-xs font-bold uppercase tracking-wider"
                     >Menu</span>
-                    
+
                     <div class="w-5 h-4 relative flex flex-col justify-between items-end">
-                        <span 
+                        <span
                             :class="menuOpen ? 'rotate-45 translate-y-[7px] w-5 bg-[#FB6C00]' : 'w-5 bg-stone-900 group-hover:bg-[#569118]'"
                             class="h-[2px] rounded-full transition-all duration-300 origin-center"
                         ></span>
-                        <span 
+                        <span
                             :class="menuOpen ? 'opacity-0 translate-x-2' : 'w-3.5 bg-stone-900 group-hover:w-5 group-hover:bg-[#FB6C00]'"
                             class="h-[2px] rounded-full transition-all duration-300"
                         ></span>
-                        <span 
+                        <span
                             :class="menuOpen ? '-rotate-45 -translate-y-[7px] w-5 bg-[#FB6C00]' : 'w-4 bg-stone-900 group-hover:w-5 group-hover:bg-[#569118]'"
                             class="h-[2px] rounded-full transition-all duration-300 origin-center"
                         ></span>
@@ -151,13 +151,13 @@
     </header>
 
     <!-- SLIDE-OVER INTERACTIVE BURGER MENU DRAWER -->
-    <div 
-        x-show="menuOpen" 
+    <div
+        x-show="menuOpen"
         x-cloak
         class="fixed inset-0 z-40 flex justify-end"
     >
         <!-- Backdrop -->
-        <div 
+        <div
             x-show="menuOpen"
             x-transition.opacity
             @click="menuOpen = false"
@@ -165,7 +165,7 @@
         ></div>
 
         <!-- Drawer Panel -->
-        <div 
+        <div
             x-show="menuOpen"
             x-transition:enter="transition transform ease-out duration-300"
             x-transition:enter-start="translate-x-full"
@@ -180,7 +180,7 @@
                     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#569118]">Direktori Navigasi</p>
                     <span class="text-xs font-mono text-stone-400">mango.moooo</span>
                 </div>
-                
+
                 <nav class="divide-y divide-stone-900/10 border-y border-stone-900/10">
                     <a @click="menuOpen = false" href="#komposisi" class="group py-4 flex items-baseline justify-between hover:pl-3 transition-all duration-200">
                         <div class="flex items-baseline gap-4">
@@ -227,7 +227,7 @@
             <!-- Direct Social & Order Channels Inside Burger Menu -->
             <div class="mt-8 space-y-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <a 
+                    <a
                         href="https://wa.me/6285397873189?text=Halo%20mango.moooo!%20Saya%20ingin%20memesan%20Mango%20Jelly%20Milk."
                         target="_blank"
                         class="p-4 rounded-2xl bg-[#569118]/10 hover:bg-[#569118] text-stone-900 hover:text-white border border-[#569118]/30 transition-all group"
@@ -235,7 +235,7 @@
                         <span class="block text-[10px] font-bold uppercase tracking-wider text-[#569118] group-hover:text-[#FFDD9C]">WhatsApp Order</span>
                         <span class="block font-bold text-sm mt-1">+62 853-9787-3189</span>
                     </a>
-                    <a 
+                    <a
                         href="https://www.instagram.com/manggo.moo?xtok=MWxsd2xlcTJkc2Z0Yw=="
                         target="_blank"
                         class="p-4 rounded-2xl bg-[#FFDD9C]/50 hover:bg-[#FB6C00] text-stone-900 hover:text-white border border-[#F9B637] transition-all group"
@@ -245,7 +245,7 @@
                     </a>
                 </div>
 
-                <button 
+                <button
                     @click="menuOpen = false; cartOpen = true"
                     class="w-full py-3.5 px-4 rounded-2xl bg-stone-950 hover:bg-[#FB6C00] text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                 >
@@ -260,7 +260,7 @@
         <section class="relative overflow-hidden bg-grid-pattern pt-8 pb-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                    
+
                     <!-- Kolom Kiri (7 Kolom): Headline & Value Proposition -->
                     <div class="lg:col-span-7 rounded-[2rem] border border-stone-900/10 bg-white p-8 sm:p-12 shadow-xs flex flex-col justify-between relative overflow-hidden">
                         <!-- Subtle Top Accent Line -->
@@ -291,15 +291,15 @@
                         <!-- Bottom Actions & Quick Metrics -->
                         <div class="mt-10 pt-8 border-t border-stone-900/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                             <div class="flex flex-wrap items-center gap-3">
-                                <a 
-                                    href="#katalog" 
+                                <a
+                                    href="#katalog"
                                     class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-[#FB6C00] hover:bg-stone-950 text-white text-sm font-bold transition-all shadow-sm hover:shadow-md"
                                 >
                                     <span>Pesan Sekarang</span>
                                     <span>→</span>
                                 </a>
-                                <a 
-                                    href="https://wa.me/6285397873189?text=Halo%20mango.moooo!%20Saya%20ingin%20memesan%20Mango%20Jelly%20Milk." 
+                                <a
+                                    href="https://wa.me/6285397873189?text=Halo%20mango.moooo!%20Saya%20ingin%20memesan%20Mango%20Jelly%20Milk."
                                     target="_blank"
                                     class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-[#569118]/10 hover:bg-[#569118] text-[#569118] hover:text-white text-sm font-bold transition-all"
                                 >
@@ -323,7 +323,7 @@
 
                     <!-- Kolom Kanan (5 Kolom): Visual Showcase Card -->
                     <div class="lg:col-span-5 rounded-[2rem] bg-gradient-to-br from-[#FFDD9C]/70 via-[#FFDD9C]/40 to-[#F9B637]/30 border border-[#F9B637] p-7 sm:p-8 flex flex-col justify-between shadow-xs">
-                        
+
                         <!-- Card Header -->
                         <div class="flex items-center justify-between gap-2">
                             <span class="px-3 py-1 rounded-full bg-white/90 border border-stone-900/10 text-[11px] font-mono font-bold uppercase tracking-wider text-stone-800">
@@ -337,9 +337,9 @@
                         <!-- Brand Logo Showcase -->
                         <div class="my-6">
                             <div class="relative w-full aspect-4/3 rounded-3xl bg-white p-6 border-2 border-white shadow-md flex items-center justify-center overflow-hidden group">
-                                <img 
-                                    src="logo.png?v=2" 
-                                    alt="mango.moooo — Milk, Mango & Jelly" 
+                                <img
+                                    src="logo.png?v=2"
+                                    alt="mango.moooo — Milk, Mango & Jelly"
                                     class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                                 >
@@ -375,7 +375,7 @@
                                 </div>
                                 <p class="text-xs text-[#569118] font-bold mt-0.5">Cuman Rp25.000 <span class="text-stone-400 line-through font-normal">Rp30.000</span></p>
                             </div>
-                            <button 
+                            <button
                                 @click="addToCart({ id: 'mjm-bundling', name: 'Promo Bundling (2 Botol Mango Jelly Milk)', price: 25000 })"
                                 class="px-4 py-2.5 rounded-xl bg-[#FB6C00] hover:bg-stone-950 text-white text-xs font-bold transition-colors shrink-0 cursor-pointer"
                             >
@@ -412,7 +412,7 @@
                         <div>
                             <div class="flex items-center justify-between mb-7">
                                 <span class="text-xs font-mono uppercase tracking-wider text-stone-500 font-bold">Komposisi 01</span>
-                                <span 
+                                <span
                                     class="px-3.5 py-1 rounded-full text-white text-[11px] font-bold shadow-2xs"
                                     style="background-color: #FB6C00"
                                 >
@@ -432,7 +432,7 @@
                         <div>
                             <div class="flex items-center justify-between mb-7">
                                 <span class="text-xs font-mono uppercase tracking-wider text-stone-500 font-bold">Komposisi 02</span>
-                                <span 
+                                <span
                                     class="px-3.5 py-1 rounded-full text-white text-[11px] font-bold shadow-2xs"
                                     style="background-color: #569118"
                                 >
@@ -452,7 +452,7 @@
                         <div>
                             <div class="flex items-center justify-between mb-7">
                                 <span class="text-xs font-mono uppercase tracking-wider text-stone-500 font-bold">Komposisi 03</span>
-                                <span 
+                                <span
                                     class="px-3.5 py-1 rounded-full text-white text-[11px] font-bold shadow-2xs"
                                     style="background-color: #F9B637"
                                 >
@@ -492,7 +492,7 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                                         <div class="rounded-[2rem] border-2 border-stone-900/10 bg-white/90 shadow-xs p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden transition-all hover:shadow-xl">
-                        
+
                         
                         <div>
                             <div class="flex items-center justify-between gap-2 mb-6">
@@ -523,13 +523,13 @@
                             </div>
 
                             <div class="flex items-center gap-2.5">
-                                <button 
+                                <button
                                     @click="addToCart({ id: 'mjm-single', name: 'Mango Jelly Milk', price: 15000 })"
                                     class="flex-1 sm:flex-initial px-6 py-4 rounded-2xl bg-[#569118] hover:bg-stone-950 text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                                 >
                                     + Keranjang
                                 </button>
-                                <a 
+                                <a
                                     href="https://wa.me/6285397873189?text=Halo+mango.moooo%21+Saya+ingin+pesan+langsung%3A+1x+Mango+Jelly+Milk+%28Rp15.000%29"
                                     target="_blank"
                                     title="Pesan Langsung via WhatsApp"
@@ -541,7 +541,7 @@
                         </div>
                     </div>
                                         <div class="rounded-[2rem] border-2 border-[#FB6C00] bg-white shadow-md p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden transition-all hover:shadow-xl">
-                        
+
                                                 <div class="absolute top-0 right-0 bg-[#FB6C00] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl">
                             Paling Diminati
                         </div>
@@ -577,13 +577,13 @@
                             </div>
 
                             <div class="flex items-center gap-2.5">
-                                <button 
+                                <button
                                     @click="addToCart({ id: 'mjm-bundling', name: 'Promo Bundling (2 Botol)', price: 25000 })"
                                     class="flex-1 sm:flex-initial px-6 py-4 rounded-2xl bg-[#FB6C00] hover:bg-stone-950 text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                                 >
                                     + Keranjang
                                 </button>
-                                <a 
+                                <a
                                     href="https://wa.me/6285397873189?text=Halo+mango.moooo%21+Saya+ingin+pesan+langsung%3A+1x+Promo+Bundling+%282+Botol%29+%28Rp25.000%29"
                                     target="_blank"
                                     title="Pesan Langsung via WhatsApp"
@@ -766,7 +766,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-8">
                 <div class="rounded-[2.25rem] bg-white border-2 border-[#F9B637] p-8 sm:p-12 shadow-sm">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                        
+
                         <!-- Left CTA Description -->
                         <div class="lg:col-span-7">
                             <span class="inline-block px-3.5 py-1 rounded-full bg-[#569118] text-white text-xs font-bold uppercase tracking-wider mb-4">
@@ -780,7 +780,7 @@
                             </p>
 
                             <div class="mt-8 flex flex-wrap gap-3.5">
-                                <a 
+                                <a
                                     href="https://wa.me/6285397873189?text=Halo%20mango.moooo!%20Saya%20ingin%20memesan%20Mango%20Jelly%20Milk."
                                     target="_blank"
                                     class="inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-[#569118] hover:bg-stone-950 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
@@ -789,15 +789,15 @@
                                     <span>Order via WhatsApp</span>
                                 </a>
 
-                                <button 
+                                <button
                                     @click="cartOpen = true"
                                     class="px-7 py-4 rounded-2xl bg-[#FB6C00] hover:bg-stone-950 text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-sm"
                                 >
                                     Pesan Lewat Keranjang Web
                                 </button>
 
-                                <a 
-                                    href="https://www.instagram.com/manggo.moo?xtok=MWxsd2xlcTJkc2Z0Yw==" 
+                                <a
+                                    href="https://www.instagram.com/manggo.moo?xtok=MWxsd2xlcTJkc2Z0Yw=="
                                     target="_blank"
                                     class="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-[#FFDD9C]/60 hover:bg-[#F9B637] text-stone-950 text-xs font-bold uppercase tracking-wider transition-all"
                                 >
