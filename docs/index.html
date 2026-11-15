@@ -811,3 +811,238 @@
                         <div class="lg:col-span-5 bg-[#FFFCF7] rounded-3xl border border-stone-900/10 p-6 sm:p-8 space-y-4">
                             <div class="flex items-center justify-between border-b border-stone-200 pb-4">
                                 <h3 class="font-display text-xl font-bold text-stone-950">Informasi Kontak</h3>
+                                <span class="px-2.5 py-1 rounded-full bg-[#FFDD9C] text-stone-900 text-[10px] font-bold uppercase">Fast Response</span>
+                            </div>
+
+                            <div class="p-3.5 rounded-2xl bg-white border border-stone-200/80">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-stone-400">Nama Usaha</span>
+                                <span class="text-sm sm:text-base font-bold text-stone-950">mango.moooo (Mango Jelly Milk)</span>
+                            </div>
+
+                            <a
+                                href="https://wa.me/6285397873189?text=Halo%20mango.moooo!%20Saya%20ingin%20memesan%20Mango%20Jelly%20Milk."
+                                target="_blank"
+                                class="block p-3.5 rounded-2xl bg-white border border-stone-200/80 hover:border-[#569118] transition-colors group"
+                            >
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-stone-400">WhatsApp Pemesanan</span>
+                                <div class="flex items-center justify-between mt-0.5">
+                                    <span class="text-sm sm:text-base font-bold text-[#569118] group-hover:underline">+62 853-9787-3189</span>
+                                    <span class="text-xs font-bold text-[#569118]">Chat →</span>
+                                </div>
+                            </a>
+
+                            <a
+                                href="https://www.instagram.com/manggo.moo?xtok=MWxsd2xlcTJkc2Z0Yw=="
+                                target="_blank"
+                                class="block p-3.5 rounded-2xl bg-white border border-stone-200/80 hover:border-[#FB6C00] transition-colors group"
+                            >
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-stone-400">Instagram Resmi</span>
+                                <div class="flex items-center justify-between mt-0.5">
+                                    <span class="text-sm sm:text-base font-bold text-[#FB6C00] group-hover:underline">@manggo.moo</span>
+                                    <span class="text-xs font-bold text-[#FB6C00]">Buka IG ↗</span>
+                                </div>
+                            </a>
+
+                            <div class="p-3.5 rounded-2xl bg-white border border-stone-200/80">
+                                <span class="block text-[10px] font-bold uppercase tracking-wider text-stone-400">Lokasi</span>
+                                <span class="text-sm sm:text-base font-bold text-stone-800">Makassar, Sulawesi Selatan</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-stone-950 text-white border-t border-stone-800 py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div>
+                <span class="font-display text-2xl font-bold text-[#FFDD9C]">mango<span class="text-[#FB6C00]">.moooo</span></span>
+                <p class="text-xs text-stone-400 mt-1.5">
+                    Milk, Mango & Jelly • Makassar, Sulawesi Selatan
+                </p>
+                <div class="flex flex-wrap items-center gap-4 mt-3 text-xs font-semibold text-[#F9B637]">
+                    <a href="https://www.instagram.com/manggo.moo?xtok=MWxsd2xlcTJkc2Z0Yw==" target="_blank" class="hover:underline">Instagram: @manggo.moo</a>
+                    <span>•</span>
+                    <a href="https://wa.me/6285397873189" target="_blank" class="hover:underline">WA: +62 853-9787-3189</a>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-6 text-xs font-medium text-stone-400">
+                <a href="#komposisi" class="hover:text-[#F9B637] transition-colors">Komposisi</a>
+                <a href="#katalog" class="hover:text-[#F9B637] transition-colors">Katalog</a>
+                <a href="#produksi" class="hover:text-[#F9B637] transition-colors">Proses Produksi</a>
+                <a href="#keunggulan" class="hover:text-[#F9B637] transition-colors">Keunggulan</a>
+                <a href="#kontak" class="hover:text-[#F9B637] transition-colors">Pemesanan</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SLIDE-OVER CART DRAWER (DENGAN CHECKOUT WA +62 853-9787-3189) -->
+    <div
+        x-show="cartOpen"
+        x-cloak
+        class="fixed inset-0 z-50 flex justify-end"
+    >
+        <div
+            x-show="cartOpen"
+            x-transition.opacity
+            @click="cartOpen = false"
+            class="fixed inset-0 bg-stone-950/50 backdrop-blur-xs"
+        ></div>
+
+        <div
+            x-show="cartOpen"
+            x-transition:enter="transition transform ease-out duration-300"
+            x-transition:enter-start="translate-x-full"
+            x-transition:enter-end="translate-x-0"
+            x-transition:leave="transition transform ease-in duration-200"
+            x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full"
+            class="relative w-full max-w-md bg-white h-full p-6 sm:p-8 flex flex-col justify-between border-l border-stone-900/10 shadow-2xl overflow-y-auto"
+        >
+            <div>
+                <div class="flex items-center justify-between pb-5 border-b border-stone-900/10">
+                    <div>
+                        <h3 class="font-display text-2xl font-bold text-stone-950">Keranjang Pesanan</h3>
+                        <p class="text-xs text-[#569118] font-semibold mt-0.5">Terhubung ke WhatsApp +62 853-9787-3189</p>
+                    </div>
+                    <button
+                        @click="cartOpen = false"
+                        class="px-3 py-1.5 rounded-xl border border-stone-200 text-xs font-bold hover:bg-stone-100 cursor-pointer"
+                    >
+                        Tutup ✕
+                    </button>
+                </div>
+
+                <!-- Daftar Item Keranjang -->
+                <div class="mt-6 space-y-3.5 max-h-[42vh] overflow-y-auto pr-1">
+                    <template x-if="cart.length === 0">
+                        <div class="py-12 px-4 text-center rounded-2xl bg-[#FFDD9C]/25 border border-dashed border-[#F9B637]">
+                            <p class="text-sm font-bold text-stone-800">Keranjangmu masih kosong</p>
+                            <p class="text-xs text-stone-500 mt-1">Pilih paket Mango Jelly Milk Rp15.000 atau Promo Bundling 2 Botol Rp25.000.</p>
+                        </div>
+                    </template>
+
+                    <template x-for="(item, index) in cart" :key="item.id">
+                        <div class="p-4 rounded-2xl border border-stone-200 bg-[#FFFCF7] flex items-center justify-between gap-4">
+                            <div>
+                                <p class="text-sm font-bold text-stone-900" x-text="item.name"></p>
+                                <p class="text-xs text-[#FB6C00] font-bold mt-0.5" x-text="formatRupiah(item.price * item.qty)"></p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button @click="decreaseQty(index)" class="w-7 h-7 rounded-lg bg-white border border-stone-300 hover:border-stone-900 text-xs font-bold cursor-pointer">-</button>
+                                <span class="text-xs font-bold w-5 text-center" x-text="item.qty"></span>
+                                <button @click="increaseQty(index)" class="w-7 h-7 rounded-lg bg-white border border-stone-300 hover:border-stone-900 text-xs font-bold cursor-pointer">+</button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Input Nama & Catatan Pengiriman -->
+                <div x-show="cart.length > 0" class="mt-6 pt-5 border-t border-stone-200 space-y-3">
+                    <div>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-600 mb-1">Nama Pemesan (Opsional)</label>
+                        <input
+                            type="text"
+                            x-model="buyerName"
+                            placeholder="Contoh: Budi"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:border-[#FB6C00]"
+                        >
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-600 mb-1">Lokasi / Catatan Pesanan (Opsional)</label>
+                        <input
+                            type="text"
+                            x-model="buyerNote"
+                            placeholder="Contoh: Ambil di tempat / Antarkan ke Kampus UNM"
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:border-[#FB6C00]"
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Total & Tombol Checkout WA -->
+            <div class="pt-5 border-t border-stone-900/10 mt-6">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs uppercase tracking-wider text-stone-500 font-bold">Total Pembayaran</span>
+                    <span class="font-display text-2xl font-bold text-stone-950" x-text="formatRupiah(cartTotal())"></span>
+                </div>
+                <button
+                    @click="checkoutWhatsApp()"
+                    :disabled="cart.length === 0"
+                    :class="cart.length === 0 ? 'opacity-40 cursor-not-allowed bg-stone-400' : 'bg-[#569118] hover:bg-stone-950 cursor-pointer'"
+                    class="w-full py-4 rounded-2xl text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm"
+                >
+                    Kirim Pesanan ke WhatsApp →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALPINE.JS STATE -->
+    <script>
+        function mangoStore() {
+            return {
+                menuOpen: false,
+                cartOpen: false,
+                buyerName: '',
+                buyerNote: '',
+                cart: [
+                    { id: 'mjm-single', name: 'Mango Jelly Milk (250 ml)', price: 15000, qty: 1 }
+                ],
+                addToCart(product) {
+                    const existing = this.cart.find(item => item.id === product.id);
+                    if (existing) {
+                        existing.qty++;
+                    } else {
+                        this.cart.push({ ...product, qty: 1 });
+                    }
+                    this.cartOpen = true;
+                },
+                increaseQty(index) {
+                    this.cart[index].qty++;
+                },
+                decreaseQty(index) {
+                    if (this.cart[index].qty > 1) {
+                        this.cart[index].qty--;
+                    } else {
+                        this.cart.splice(index, 1);
+                    }
+                },
+                cartCount() {
+                    return this.cart.reduce((sum, item) => sum + item.qty, 0);
+                },
+                cartTotal() {
+                    return this.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                },
+                formatRupiah(number) {
+                    return 'Rp' + number.toLocaleString('id-ID');
+                },
+                checkoutWhatsApp() {
+                    if (this.cart.length === 0) return;
+                    let lines = ['Halo *mango.moooo* Makassar! Saya ingin memesan:'];
+                    lines.push('');
+                    this.cart.forEach(item => {
+                        lines.push(`• ${item.qty}x ${item.name} — ${this.formatRupiah(item.price * item.qty)}`);
+                    });
+                    lines.push('');
+                    lines.push(`*Total Pembayaran: ${this.formatRupiah(this.cartTotal())}*`);
+
+                    if (this.buyerName.trim() !== '') {
+                        lines.push(`Nama Pemesan: ${this.buyerName.trim()}`);
+                    }
+                    if (this.buyerNote.trim() !== '') {
+                        lines.push(`Catatan/Lokasi: ${this.buyerNote.trim()}`);
+                    }
+
+                    const url = `https://wa.me/6285397873189?text=${encodeURIComponent(lines.join('\n'))}`;
+                    window.open(url, '_blank');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
