@@ -1,5 +1,5 @@
 <?php
-// build-pages.php — Generator halaman statis MangoJelly.co untuk GitHub Pages
+// build-pages.php — Generator halaman statis mango.moooo tanpa promo bundling
 
 $compositions = [
     [
@@ -35,23 +35,9 @@ $products = [
         'name' => 'Mango Jelly Milk',
         'size' => 'Ukuran 250 ml per botol',
         'price' => 15000,
-        'normal_price' => null,
-        'tag' => 'Single Bottle',
+        'tag' => 'Signature Drink',
         'desc' => 'Minuman creamy dessert dengan mangga asli, susu UHT, jelly, dan chia seed. Cocok dinikmati saat dingin.',
-        'highlight' => 'Ramah di kantong mahasiswa',
-        'is_promo' => false,
-    ],
-    [
-        'id' => 'mjm-bundling',
-        'code' => '02',
-        'name' => 'Promo Bundling (2 Botol)',
-        'size' => '2 Botol × 250 ml',
-        'price' => 25000,
-        'normal_price' => 30000,
-        'tag' => 'Hemat Rp5.000',
-        'desc' => '2 Botol Mango Jelly Milk cuman Rp25.000. Lebih hemat untuk dinikmati bersama teman.',
-        'highlight' => 'Paket paling favorit untuk berdua',
-        'is_promo' => true,
+        'highlight' => 'Diproduksi fresh setiap hari & ramah di kantong mahasiswa',
     ],
 ];
 
@@ -154,10 +140,8 @@ if (!is_dir(__DIR__ . '/docs')) {
 
 file_put_contents(__DIR__ . '/docs/index.html', $htmlOutput);
 
-// Salin otomatis logo.png dari folder public ke folder docs jika ada
 if (file_exists(__DIR__ . '/public/logo.png')) {
     copy(__DIR__ . '/public/logo.png', __DIR__ . '/docs/logo.png');
-    echo "Logo berhasil disalin ke docs/logo.png!\n";
 }
 
-echo "Berhasil memperbarui docs/index.html dengan revisi MangoJelly.co!\n";
+echo "Berhasil memperbarui docs/index.html tanpa promo bundling!\n";
